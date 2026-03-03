@@ -5,10 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="">
     <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
-    <nav class="bg-black fixed w-full">
-        Udemy
+    {% load static %}
+    <nav class="fixed w-full flex justify-between ">
+        <div class="">
+            <p class="text-4xl text-shadow-lg font-bold tracking-wider ml-10 mt-8 mr-10 font-sans border-default">ELAVON</p>     
+        </div>
+        <div class="mt-10">
+            <a class=" text-xl " href="">Explore</a> 
+        </div>
+        <div class="bg-white flex-1 mt-8 w-48 px-1 py-1 rounded-full border m-5 overflow-hidden">
+            <input type='' placeholder='Search for anything' class=" h-10 text-2xl outline-none bg-white pl-4 text-sm" />
+        </div>      
     </nav>
     {% block body %}
     {% endblock %}
