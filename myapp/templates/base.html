@@ -4,49 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="/static/css/base.css">
-    <title>Document</title>
+    <title>Doc🏋️‍♀️</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <body>
     {% load static %}
-    <nav class="fixed  w-full flex justify-between  shadow-lg gap-5 flex lg:mx-auto ">
-        
-        <!-- mobile view -->
-        
-        <div class="w-full  lg:hidden flex    justify-between bg-blue-300">
-            <button class="lg:hidden hover:bg-green-200">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                    class="w-8 h-8"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor">
+    <nav class="fixed  w-full flex shadow-lg gap-5 lg:mx-auto">
 
-                    <path stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-            </button>
-            <a href="#" class="text-3xl text-shadow-lg text-center font-bold tracking-wider font-sans">
-                SkillGRID
-            </a>
-            <a href="">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-                </svg>
-            </a>
-            <a href="">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                </svg>
-            </a>
+        <!-- mobile view -->
+        <div class="w-full mt-5 mb-5 flex items-center justify-between xl:hidden ">
+            <div class="flex ml-4">
+                <button class=" hover:bg-green-200">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        class="w-8 h-8"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor">
+
+                        <path stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+            <div>
+                <a href="#" class="text-3xl text-shadow-lg  text-center font-bold tracking-wider font-sans">
+                    SkillGRID
+                </a>
+            </div>
+            <div class="flex gap-6">
+                <a href="">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+                    </svg>
+                </a>
+                <a href="" class="mr-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                    </svg>
+                </a>
+            </div>
         </div>
         
-        <!-- Desktop view -->
-        <div class="bg-blue-300">
-            <div class="flex w-full mt-3  md:gap-6 bg-red-300 ml-5 ">
+            <!-- Desktop view -->
+        <div class="flex w-full flex-col xl:block hidden">
+            <div class="flex w-full mt-3  md:gap-6 ml-5 ">
                 <div class="flex flex-row gap-6 mt-4">
-                    <a href="#" class="lg:block hidden lg:text-5xl text-shadow-lg text-center font-bold tracking-wider font-sans">
+                    <a href="#" class="lg:text-5xl text-shadow-lg text-center font-bold tracking-wider font-sans">
                         SkillGRID
                     </a>
                     <a href="#" class="lg:text-xl hidden lg:block lg:font-light mt-3">
@@ -71,13 +76,13 @@
                         <input
                             type="text"
                             placeholder="Search for anything..."
-                            class="lg:w-full  mt-1 md:h-9 p-9 text-2xl  lg:pl-13 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-40"/>
+                            class="lg:w-full shadow-2xl  mt-1 md:h-9 p-9 text-2xl  lg:pl-13 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-40"/>
                     </form>               
                 </div>
-                <div class="gap-7 lg:block mt-6 hidden  lg:flex  end-0">
-                    <a href="" class="text-xl font-light ">SkillGRID Business</a>
-                    <a href="" class="text-xl font-light ">Instructor</a>
-                    <a href="" class="text-xl font-light ">My learning</a>
+                <div class="gap-7 lg:block mt-6 hidden text-xl font-light lg:flex  end-0">
+                    <a href="" class="hidden 2xl:block">SkillGRID Business</a>
+                    <a href="" class="hidden 2xl:block">Instructor</a>
+                    <a href="" class="">My learning</a>
                     <a href="">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
@@ -94,12 +99,25 @@
                         </svg>
                     </a>
                 </div>
-                <div class="mr-8 mt-5 hidden lg:block">
+                <div class="mr-8 mt-4 hidden lg:block">
                     <a href="" class="">
                         <img height="55" width="55" src="{% static 'images/user-image.png' %}" alt="">
                     </a>   
                 </div>
-                <div class="devide-y-4">
+            </div>
+            
+            <div class="flex flex-col  items-center gap-auto lg:mx-auto m-10  lg:flex hidden" >
+                <div class="text-xl flex gap-8  font-light ">
+                    <a href="" class="">Devoplopment</a>
+                    <a href="" class="">Business</a>
+                    <a href="">Finance & Accounting</a>
+                    <a href="">IT & Software</a>
+                    <a href="">office Productivity</a>
+                    <a href="">Personal Devolopment</a>
+                    <a href="" class="hidden xl:block">Design</a>
+                    <a href="" class="hidden xl:block">Marketing</a>
+                    <a href="" class="hidden 2xl:block">Health & Fitness</a>
+                    <a href="" class="hidden 2xl:block">Music</a>
                 </div>
             </div>    
         </div>
