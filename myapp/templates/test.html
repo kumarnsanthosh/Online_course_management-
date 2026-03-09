@@ -1,22 +1,29 @@
-<div class="relative  flex flex-1 h-10 hidden  lg:block lg:mx-auto  ">
-                    <form action="" class="w-full">
-                        <input
-                            type="text"
-                            placeholder="Search for anything..."
-                            class="lg:w-full shadow-2xl  mt-1 md:h-9 bg-slate-100 p-9 text-2xl  lg:pl-13 border rounded-full focus:outline-none focus:ring-2 focus:ring-blue-40"/>
-                            <button>
-                                <svg class="absolute text-xl mt-1 w-8 h-8 left-3 top-1/2 text-gray-400"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor">
-
-                        <path stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M21 21l-4.35-4.35m1.6-5.65
-                            a7 7 0 11-14 0
-                            7 7 0 0114 0z"/>
-                        </svg>
-                            </button>
-                    </form> 
+<div id="default-carousel" class="relative h-[600px] m-20 w-auto" data-carousel="slide">
+        <!-- Carousel wrapper -->
+        <div class="relative h-full  overflow-hidden rounded-base w-auto">
+            <!-- Item 1 -->
+            <div class="hidden mmd:h-96 duration-700 p-15 ease-in-out" data-carousel-item>
+                <img  src="https://img-c.udemycdn.com/notices/web_carousel_slide/image/1ffb3070-e5a7-4d48-ba90-4c1d7cfbb913.png" class="absolute   block w-full -translate-x-1/2 -translate-y-1/2 top-1/2  left-1/2" alt="...">
+            </div>
+            <!-- Item 2 -->
+            <div class="hidden duration-700  ease-in-out" data-carousel-item>
+                <img  src="https://img-c.udemycdn.com/notices/featured_carousel_slide/image/6acf1307-d61e-4bda-85b2-567714b7be7b.png" class="absolute  block w-full   -translate-x-1/2 -translate-y-1/2 top-1/2  left-1/2" alt="...">
+            </div>
+            <!-- Item 3 -->
+        </div>
+        <!-- Slider indicators -->
+        
+        <!-- Slider controls -->
+        <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-5 h-5 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/></svg>
+                <span class="sr-only">Previous</span>
+            </span>
+        </button>
+        <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                <svg class="w-5 h-5 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/></svg>
+                <span class="sr-only">Next</span>
+            </span>
+        </button>
+    </div>

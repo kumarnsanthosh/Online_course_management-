@@ -2,40 +2,45 @@
 {% extends 'base.html' %}
 {% block body %}
 {% load static %}
-<div class="min-h-screen bg-white">
-    <div class="flex flex-col p-10 items-center gap-auto hidden xl:block  bg-slate-900 lg:mx-auto  xl:flex hidden" >
-        <div class="text-xl flex gap-8 text-white  ">
-                <a href="" class="hover:text-indigo-400">Devoplopment</a>
-                <a href="" class="hover:text-indigo-400">Business</a>
-                <a href="" class="hover:text-indigo-400">Finance & Accounting</a>
-                <a href="" class="hover:text-indigo-400">IT & Software</a>
-                <a href="" class="hover:text-indigo-400">office Productivity</a>
-                <a href="" class="hover:text-indigo-400">Personal Devolopment</a>
-                <a href="" class="hidden xl:block hover:text-indigo-400">Design</a>
-                <a href="" class="hidden 2xl:block hover:text-indigo-400">Marketing</a>
-                <a href="" class="hidden 2xl:block hover:text-indigo-400">Health & Fitness</a>
-                <a href="" class="hidden 2xl:block hover:text-indigo-400">Music</a>
+<div class="min-h-screen ">
+    <div class="bg-slate-900 flex justify-center  pb-11 pt-9 text-2xl gap-6  text-white ">
+        <a href="" class="hover:text-indigo-400">Devoplopment</a>
+        <a href="" class="hover:text-indigo-400">Business</a>
+        <a href="" class="hover:text-indigo-400">Finance & Accounting</a>
+        <a href="" class="hover:text-indigo-400">IT & Software</a>
+        <a href="" class="hover:text-indigo-400">office Productivity</a>
+        <a href="" class="hover:text-indigo-400">Personal Devolopment</a>
+        <a href="" class="hidden xl:block hover:text-indigo-400">Design</a>
+        <a href="" class="hidden 2xl:block hover:text-indigo-400">Marketing</a>
+        <a href="" class="hidden 2xl:block hover:text-indigo-400">Health & Fitness</a>
+        <a href="" class="hidden 2xl:block hover:text-indigo-400">Music</a>
+    </div>
+    <div class="flex ml-20 mt-15">
+        <div class="flex">
+            <img height="80px" width="80px" src="/static/images/user-image.png" alt="" class="">
         </div>
+        <div class="flex flex-col ml-7">
+            <H1 class="text-4xl mb-3">Welcome back, username</H1>
+            <a href="" class="text-2xl hover:underline text-blue-900">Add occupation and interest</a>    
+        </div>
+        
     </div>
-    <div>
-        <img src="" alt="">
-        <h1  class="text-3xl font-bold">Welcome back,  username</h1>
-        <a href=""></a>    
-    </div>
-    <div id="default-carousel" class="relative w-full  bg-red-300 h-auto" data-carousel="slide">
+    <div id="default-carousel" class="relative h-[600px] m-20 w-auto" data-carousel="slide">
         <!-- Carousel wrapper -->
-        <div class="relative h-64 overflow-hidden rounded-base md:h-96">
+        <div class="relative h-full  overflow-hidden rounded-base w-auto">
             <!-- Item 1 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img height="" src="https://img-c.udemycdn.com/notices/web_carousel_slide/image/1ffb3070-e5a7-4d48-ba90-4c1d7cfbb913.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <div class="hidden mmd:h-96 duration-700 p-15 ease-in-out" data-carousel-item>
+                <img  src="https://img-c.udemycdn.com/notices/web_carousel_slide/image/1ffb3070-e5a7-4d48-ba90-4c1d7cfbb913.png" class="absolute   block w-full -translate-x-1/2 -translate-y-1/2 top-1/2  left-1/2" alt="...">
             </div>
             <!-- Item 2 -->
-            <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                <img src="https://img-c.udemycdn.com/notices/featured_carousel_slide/image/6acf1307-d61e-4bda-85b2-567714b7be7b.png" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <div class="hidden duration-700  ease-in-out" data-carousel-item>
+                <img  src="https://img-c.udemycdn.com/notices/featured_carousel_slide/image/6acf1307-d61e-4bda-85b2-567714b7be7b.png" class="absolute  block w-full   -translate-x-1/2 -translate-y-1/2 top-1/2  left-1/2" alt="...">
             </div>
-        
+            <!-- Item 3 -->
         </div>
-    <!-- Slider controls -->
+        <!-- Slider indicators -->
+        
+        <!-- Slider controls -->
         <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
             <span class="inline-flex items-center justify-center w-10 h-10 rounded-base bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
                 <svg class="w-5 h-5 text-white rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m15 19-7-7 7-7"/></svg>
@@ -50,6 +55,6 @@
         </button>
     </div>
 
-
 </div>
+    
 {% endblock %}

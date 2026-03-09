@@ -14,10 +14,11 @@
     <link rel="stylesheet" href="/static/css/home.css">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="/static/js/home.js"></script>  
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 </head>
-<body class="">
-    <nav class="sticky top-0 w-full flex shadow-lg gap-5 pb-10 lg:mx-auto bg-slate-900 pl-5">
+<body >
+    <nav class="sticky z-50 top-0 w-full  flex shadow-lg gap-5 pb-10 lg:mx-auto bg-slate-900 pl-5">
 
         <!-- mobile view -->
         <div class="w-full mt-5 flex items-center justify-between xl:hidden ">
@@ -37,9 +38,9 @@
                 </button>
             </div>
             <div class="flex">
-                <a href="#" class="">
+                <a href="#" class="flex">
                     <img height="40px" width="40px" src="{% static 'images/icon_bulb.png' %}" class="" alt="">
-                    <H1 class="text-4xl text-shadow-lg text-white text-center font-bold tracking-wider font-sans">Skill<span class="text-indigo-400">Grid</span></H>
+                    <H1 class="text-4xl text-shadow-lg text-white text-center font-bold tracking-wider font-sans">Skill<span class="text-indigo-400">Grid</span></H1>
                 </a>
             </div>
             <div class="flex gap-6">
@@ -57,17 +58,17 @@
         </div>
         
             <!-- Desktop view -->
-        <div class="flex w-full flex-col xl:block  hidden ">
+        <div class=" w-full flex-col xl:block  hidden ">
             <div class="flex w-full mt-3  md:gap-6 ml-5 ">
                 <div class="flex flex-row gap-6 mt-4">
                     <a href="#" class="flex ">
                         <img height="50px" width="50px" src="{% static 'images/icon_bulb.png' %}" alt="" class="mb-3">
                         <p class="lg:text-5xl text-shadow-lg  text-center font-bold tracking-wider text-white font-sans">Skill<span class="text-indigo-400  ">Grid</span></p>
                     </a>
-                    <button href="#" class="lg:text-xl cursor-pointer inline-flex text-white hidden  pl-3 pr-3 lg:block font-bold hover:text-indigo-400 rounded-xl" >Explore</button>
+                    <button href="#" class="lg:text-xl cursor-pointer  text-white hidden  pl-3 pr-3 lg:block font-bold hover:text-indigo-400 rounded-xl" >Explore</button>
                 </div>
                 
-                <div id="search field" class="relative w-full flex flex-1 h-10 hidden mt-4 lg:block lg:mx-auto">    
+                <div id="search field" class="relative w-full flex flex-1 h-10  mt-4 lg:block lg:mx-auto">    
                     <form method="post" class=" mx-auto w-full">   
                         <div class="flex rounded-xl border-2 border-blue-500 overflow-hidden text-xl w-full mx-auto">
                             <input type="search" placeholder="Search for anything..."
