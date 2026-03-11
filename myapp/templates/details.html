@@ -1,0 +1,13 @@
+
+{% block  body %}
+<div class="min-h-screen">
+     {{ course.name }}
+     
+
+<video class=" rounded-base" controls>
+  <source src="{{ course.video }}" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
+
+</div>
+{% endblock %}

@@ -6,3 +6,8 @@ from .models import *
 def index(request):
     course  = Course.objects.all()
     return render(request, 'index.html',{'course': course})
+
+
+def details(request, id):
+    course = Course.objects.get(id=id)
+    return render(request, 'details.html', {'course': course}) 

@@ -32,19 +32,20 @@
                 <div class="text-2xl mb-10 mt-10">
                    <H1>Recommended for you</H1> 
                 </div>
-                <div class="flex   gap-3" >
-                    {% for item in course %}
-                    <div class="flex flex-row h-50  shadow-xl  border w-80">
-                        <a href="">
-                        <img class="h-50  w-80" src="{{ item.image.url }}" alt="">
+                {% for item in course %}
+                <a href="{% url 'myapp:detail' item.id %}"><
+                <div class="flex shadow-xl  gap-6" >
+                    
+                    <div class="flex ">
+                        <img class="" src="{{ item.image.url }}" alt="">
                         <H1>{{item.name}}</H1>
                         <H2>{{item.instructor.name}}</H2>
                         <H3>{{item.rating}}</H3>
                         <H3>${{item.price}}</H3>                        
                     </div>                        
-                    </a>
-                    {% endfor %}
                 </div>
+                </a>
+                {% endfor %}
                 <div>
                     
                 </div>
