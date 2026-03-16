@@ -2,7 +2,7 @@
 {% extends 'base.html' %}
 {% block body %}
 {% load static %}
-<div class="bg-teal-100">
+<div class="bg-gray-200">
     <div class="xl:block hidden ">
         <div class="bg-slate-900 flex md:flex  p-5 justify-center  pb-109 pt-9 text-lg gap-5  text-white ">
             <a href="" class="hover:text-indigo-400">Devoplopment</a>
@@ -12,13 +12,13 @@
             <a href="" class="hover:text-indigo-400">Office Productivity</a>
         </div>
     </div>
-    <div class=" ml-12 mt-7 mr-16">
+    <div class=" ml-12 mt-7 mr-12">
         <div class="flex m-3"> 
             <div>
                 <img height="60px" width="60px" src="/static/images/user-image.png" alt="">
             </div>
             <div class="flex items-center pl-5 text-2xl font-bold">
-                <H1 class="">Welcome back, <span class="animate-bounce font-extrabold italic text-indigo-400">username</span></H1>
+                <H1 class=" text-yellow-400">Welcome back, <span class="animate-bounce font-extrabold italic text-indigo-400">username</span></H1>
             </div>
         </div>
         <div id="default-carousel" class="relative mt-10" data-carousel="slide">
@@ -36,18 +36,18 @@
         </div>
         <div>
             <div class="mt-6 mb-6">
-                <H1 class="text-2xl font-bold">Recomended for you</H1>
+                <H1 class="text-2xl font-bold text-yellow-400">Recomended for you</H1>
             </div>
         </div>
         <div class="flex flex-row">
             {% for item in course %}
             <a href="{% url 'myapp:detail' item.id %}">
-            <div class="flex mr-6 rounded-2xl gap-2 text-white shadow-lg flex-col hover:bg-neutral-secondary-medium bg-slate-700 p-8 justify-between">
+            <div class="flex mr-6 rounded-2xl gap-2 text-black bg-slate-900 shadow-xl flex-col hover:bg-neutral-secondary-medium  p-6 justify-between">
                 <img class="rounded-xl object-fit " src="{{item.image.url}}" alt="">  
-                    <H1 class="text-md font-bold">{{item.name}}</H1>
-                    <H1 class="text-xs font-bold">{{item.instructor}}</H1>
-                    <H1 class="text-2xl text-green-300 font-bold">${{item.price}}</H1>
-                    <H1 class="font-bold text-yellow-300 text-lg">⭐{{item.rating}}</H1>
+                    <H1 class="text-md line-clamp-2 min-h-[50px] text-white font-semibold">{{item.name}}</H1>
+                    <H1 class="text-xs text-white font-bold">{{item.instructor}}</H1>
+                    <H1 class="text-2xl text-green-600 font-bold">${{item.price}}</H1>
+                    <H1 class="font-bold text-lg text-yellow-300">⭐{{item.rating}}</H1>
                     
                     <div class="flex justify-center pt-2 gap-4">
                         <button class="inline-flex items-center text-white font-bold text-sm bg-indigo-400 rounded-xl p-2 ">Premium</button>
@@ -65,12 +65,12 @@
         <div class="flex flex-row">
             {% for item in course %}
             <a href="{% url 'myapp:detail' item.id %}">
-            <div class="flex mr-6 rounded-2xl gap-2 text-white shadow-lg flex-col hover:bg-neutral-secondary-medium bg-slate-700 p-8 justify-between">
+            <div class="flex mr-6 rounded-2xl gap-2 text-black bg-slate-900 shadow-xl flex-col hover:bg-neutral-secondary-medium  p-6 justify-between">
                 <img class="rounded-xl object-fit " src="{{item.image.url}}" alt="">  
-                    <H1 class="text-md font-bold">{{item.name}}</H1>
-                    <H1 class="text-xs font-bold">{{item.instructor}}</H1>
-                    <H1 class="text-2xl text-green-300 font-bold">${{item.price}}</H1>
-                    <H1 class="font-bold text-yellow-300 text-lg">⭐{{item.rating}}</H1>
+                    <H1 class="text-md line-clamp-2 min-h-[50px] text-white font-semibold">{{item.name}}</H1>
+                    <H1 class="text-xs text-white font-bold">{{item.instructor}}</H1>
+                    <H1 class="text-2xl text-green-600 font-bold">${{item.price}}</H1>
+                    <H1 class="font-bold text-lg text-yellow-300">⭐{{item.rating}}</H1>
                     
                     <div class="flex justify-center pt-2 gap-4">
                         <button class="inline-flex items-center text-white font-bold text-sm bg-indigo-400 rounded-xl p-2 ">Premium</button>
@@ -88,12 +88,12 @@
         <div class="flex flex-row">
             {% for item in course %}
             <a href="{% url 'myapp:detail' item.id %}">
-            <div class="flex mr-6 rounded-2xl gap-2 text-white shadow-lg flex-col hover:bg-neutral-secondary-medium bg-slate-700 p-8 justify-between">
+            <div class="flex mr-6 rounded-2xl gap-2 text-black bg-slate-900 shadow-xl flex-col hover:bg-neutral-secondary-medium  p-6 justify-between">
                 <img class="rounded-xl object-fit " src="{{item.image.url}}" alt="">  
-                    <H1 class="text-md font-bold">{{item.name}}</H1>
-                    <H1 class="text-xs font-bold">{{item.instructor}}</H1>
-                    <H1 class="text-2xl text-green-300 font-bold">${{item.price}}</H1>
-                    <H1 class="font-bold text-yellow-300 text-lg">⭐{{item.rating}}</H1>
+                    <H1 class="text-md line-clamp-2 min-h-[50px] text-white font-semibold">{{item.name}}</H1>
+                    <H1 class="text-xs text-white font-bold">{{item.instructor}}</H1>
+                    <H1 class="text-2xl text-green-600 font-bold">${{item.price}}</H1>
+                    <H1 class="font-bold text-lg text-yellow-300">⭐{{item.rating}}</H1>
                     
                     <div class="flex justify-center pt-2 gap-4">
                         <button class="inline-flex items-center text-white font-bold text-sm bg-indigo-400 rounded-xl p-2 ">Premium</button>
@@ -111,12 +111,12 @@
         <div class="flex flex-row">
             {% for item in course %}
             <a href="{% url 'myapp:detail' item.id %}">
-            <div class="flex mr-6 rounded-2xl gap-2 text-white shadow-lg flex-col hover:bg-neutral-secondary-medium bg-slate-700 p-8 justify-between">
+            <div class="flex mr-6 rounded-2xl gap-2 text-black bg-slate-900 shadow-xl flex-col hover:bg-neutral-secondary-medium  p-6 justify-between">
                 <img class="rounded-xl object-fit " src="{{item.image.url}}" alt="">  
-                    <H1 class="text-md font-bold">{{item.name}}</H1>
-                    <H1 class="text-xs font-bold">{{item.instructor}}</H1>
-                    <H1 class="text-2xl text-green-300 font-bold">${{item.price}}</H1>
-                    <H1 class="font-bold text-yellow-300 text-lg">⭐{{item.rating}}</H1>
+                    <H1 class="text-md line-clamp-2 min-h-[50px] text-white font-semibold">{{item.name}}</H1>
+                    <H1 class="text-xs text-white font-bold">{{item.instructor}}</H1>
+                    <H1 class="text-2xl text-green-600 font-bold">${{item.price}}</H1>
+                    <H1 class="font-bold text-lg text-yellow-300">⭐{{item.rating}}</H1>
                     
                     <div class="flex justify-center pt-2 gap-4">
                         <button class="inline-flex items-center text-white font-bold text-sm bg-indigo-400 rounded-xl p-2 ">Premium</button>

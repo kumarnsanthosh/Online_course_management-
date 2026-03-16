@@ -2,7 +2,42 @@
 {% load static %}
 {% block  body %}
 <div class="min-h-screen">
-     
+  <div class="bg-slate-900 ">
+    <div class="h-80 pl-20 pt-20">
+      <h1 class="text-4xl text-white ">{{course.name}}</h1>
+      <h2 class="text-white pt-2">created by : {{course.instructor}}</h2>
+      <div class=" pt-5 gap-4">
+          <button class="text-white font-bold text-sm bg-indigo-400 rounded-xl p-2 ">Premium</button>
+          <button class="bg-blue-300 p-2 font-bold text-sm rounded-xl">bestseller</button>
+      </div>
+      <h4 class="text-2xl pt-8 text-yellow-300 font-bold">⭐{{course.rating}}</h4> 
+    </div>
+    <div>
+      <p class="text-white"></p>
+    </div>
+  </div>
+  <div class="ml-12 mt-5 mr-12">
+    <div class="flex">
+      <div class="flex relative items-center">
+        <div>
+          <h5 class="absolute text-white text-2xl m-4 font-bold">Course preview</h5>
+          <video class="w-2/3 bg-red-200 rounded-base" controls>
+          <source src="/static/video_upload/study_video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+          </video>
+        </div>
+        <div>
+          
+        </div>
+      </div>     
+    </div>
+        
+  </div>
+  <div class="">
+    <div>
+      f
+    </div>
+  </div>
      
 
 
