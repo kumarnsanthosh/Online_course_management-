@@ -17,7 +17,7 @@
     <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 </head>
-<body class="flex flex-col bg-cyan-100 min-h-screen">
+<body class="flex flex-col bg-red-300 min-h-screen">
     <nav class="sticky z-50 top-0 w-full flex shadow-xl gap-5 pb-8 lg:mx-auto bg-slate-900 pl-5 pr-5">
 
         <!-- mobile view -->
@@ -70,7 +70,7 @@
                 
                 <div id="search field" class="relative w-full flex flex-1 h-10  mt-4 lg:block lg:mx-auto">    
                     <form method="post" class=" mx-auto w-full">   
-                        <div class="flex  border-2  overflow-hidden text-lg w-full mx-auto">
+                        <div class="flex    overflow-hidden text-lg w-full mx-auto">
                             <input type="search" placeholder="Search for anything..."
                             class="lg:w-full bg-white rounded-l-2xl text-gray-600 text-lg " />
                             <button type='button' class="flex cursor-pointer  items-center justify-center rounded-r-2xl bg-blue-400 px-5">
@@ -83,8 +83,16 @@
                         </div>
                     </form>
                 </div>
+                {% if user.is_superuser %}
+                <a href="{% url 'user:logout' %}" class="">
+                <div class="  flex items-center mt-4 mr-7">
+                        <img height="45" width="45" src="{% static 'images/admin.png' %}" alt="">
+                        <h1 class="text-white"</h1>   
+                </div>
+                </a>
+                {% elif user.is_authenticated %}
                 <div class="gap-3 lg:block mt-7 hidden text-md font-bold lg:flex end-0">
-                    <a href="" class="hidden xl:block text-white hover:text-indigo-400">Instructor</a>
+                    <a href="{% url 'myapp:instructor' %}" class="hidden xl:block text-white hover:text-indigo-400">Instructor</a>
                     <a href="" class="text-white hover:text-indigo-400">My learning</a>
                     <a href="" class="text-white hover:text-indigo-400" d="favorite">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 ">
@@ -96,7 +104,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
                             </svg>
                     </a>
-                    <a href=""  class="text-white hover:text-indigo-400" d="notification">
+                    <a href="{% url 'user:login' %}"  class="text-white hover:text-indigo-400" d="notification">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
                         </svg>
@@ -107,6 +115,12 @@
                         <img height="45" width="45" src="{% static 'images/user-image.png' %}" alt="">
                     </a>   
                 </div>
+                {% else %}
+                <div class="gap-3 lg:block mt-7 hidden text-md font-bold lg:flex end-0">
+                    <a href="{% url 'user:login' %}" class="hidden xl:block text-white hover:text-indigo-400">Log in</a>
+                    <a href="{% url 'user:register' %}" class="text-white hover:text-indigo-400">Sign Up</a>
+                </div>
+                {% endif %}
             </div>    
         </div>
     </nav>

@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'user',
     'myapp',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -118,3 +119,4 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
+LOGIN_REDIRECT_URL = 'myapp:index'

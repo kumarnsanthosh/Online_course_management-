@@ -11,3 +11,7 @@ def index(request):
 def details(request, id):
     course = Course.objects.get(id=id)
     return render(request, 'details.html', {'course': course}) 
+
+
+def instructor(request):
+    return render(request, 'instructor.html')

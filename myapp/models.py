@@ -1,11 +1,11 @@
 from django.db import models
 from django.core.validators import FileExtensionValidator
+from django.contrib.auth.models import User
 # Create your models here.
 
 
 class Instructor(models.Model):
-    name        =  models.CharField(max_length=30)
-    image       =  models.ImageField(upload_to='static/images/instructor_images')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True)
     description =  models.TextField()
     def __str__(self):
         return self.name

@@ -13,12 +13,18 @@
         </div>
     </div>
     <div class=" ml-12 mt-7 mr-12">
-        <div class="flex m-3"> 
+        <div class="flex m-3">
+            {% if user.is_superuser %}
+            <div>
+                <img height="60px" width="60px" src="/static/images/admin.png" alt="">
+            </div>
+            {% else %} 
             <div>
                 <img height="60px" width="60px" src="/static/images/user-image.png" alt="">
             </div>
+            {% endif %}
             <div class="flex items-center pl-5 text-2xl font-bold">
-                <H1 class=" text-yellow-400">Welcome back, <span class="animate-bounce font-extrabold italic text-indigo-400">username</span></H1>
+                <H1 class="">Welcome back <span class="animate-bounce font-extrabold italic text-indigo-400">{{user.username}}</span></H1>
             </div>
         </div>
         <div id="default-carousel" class="relative mt-10" data-carousel="slide">
@@ -36,7 +42,7 @@
         </div>
         <div>
             <div class="mt-6 mb-6">
-                <H1 class="text-2xl font-bold text-yellow-400">Recomended for you</H1>
+                <H1 class="text-2xl font-bold ">Recomended for you</H1>
             </div>
         </div>
         <div class="flex flex-row">
