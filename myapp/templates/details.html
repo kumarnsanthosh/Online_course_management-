@@ -5,7 +5,11 @@
   <div class="flex bg-slate-900 ">
     <div class="h-80 pl-20 pt-15">
       <h1 class="text-4xl text-white ">{{course.name}}</h1>
-      <h2 class="text-white pt-2">created by : {{course.instructor}}</h2>
+      <h2 class="text-white pt-2">created by : {% if course.instructor.user %} 
+                                                  {{course.instructor.user.username}}
+                                                {% else %}
+                                                  {{course.instructor.name}}
+                                                {% endif %}</h2>
       <div class=" pt-5 gap-4">
           <button class="text-white font-bold text-sm bg-indigo-400 rounded-xl p-2 ">Premium</button>
           <button class="bg-blue-300 p-2 font-bold text-sm rounded-xl">bestseller</button>
@@ -20,7 +24,7 @@
           <h4 class="text-white pl-2">{{course.hours}} Hours</h4>
       </div> 
     </div>
-    <div class="pl-10 ">
+    <div class="pl-10 mr-10">
     <img class="rounded-2xl" src="{{course.image.url}}" alt="">
     </div>
   </div>
@@ -98,8 +102,12 @@
         <h1 class="text-2xl underline font-bold">Instructor</h1>  
       </div>
       <div class="flex ">
-        <div class="  w-96 m-10">
-          <img class="rounded-2xl  p" src="{{course.instructor.image.url}}" alt="">
+        <div class=" m-10">
+          {% if course.instructor.image %}
+              <img height="150px" width="150px" src="{{ course.instructor.image.url }}" alt="Instructor">
+          {% else %}
+              <img src="/static/images/user-image.png" alt="Default">
+          {% endif %}
         </div>
         <div class="flex justify-items">
           <div class=" p-5">

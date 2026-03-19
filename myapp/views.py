@@ -13,5 +13,6 @@ def details(request, id):
     return render(request, 'details.html', {'course': course}) 
 
 
-def instructor(request):
+def instructor_dashboard(request):
+    
     return render(request, 'instructor.html')
