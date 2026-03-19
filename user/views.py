@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from myapp.views import index
-from .form import RegisterForm
+from .form import RegisterForm, ProfileForm
+from .models import Student
 # Create your views here.
 
 
@@ -26,3 +27,22 @@ def register(request):
     else:
         form = RegisterForm()
     return render(request, 'register.html',  {'form':form})
+
+
+def profile(request):
+    pro, created =  Student.objects.get_or_create(user=request.user)
+    return render(request, 'profile.html', {'profile':pro})
+
+
+def update_profile(request):
+    student = Student.objects.get(user=request.user)
+    
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('user:profile')
+    else:
+        form = ProfileForm(instance=student)
+    
+    return render(request, 'editprofile.html', {'form': form})
