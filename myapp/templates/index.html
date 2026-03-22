@@ -2,48 +2,48 @@
 {% extends 'base.html' %}
 {% block body %}
 {% load static %}
-<div class="">
-    <div class="xl:block hidden ">
-        <div class="bg-slate-900 flex md:flex  p-5 justify-center  pb-109 pt-9 text-lg gap-5  text-white ">
-            <a href="" class="hover:text-indigo-400">Devoplopment</a>
-            <a href="" class="hover:text-indigo-400">Business</a>
-            <a href="" class="hover:text-indigo-400">Finance & Accounting</a>
-            <a href="" class="hover:text-indigo-400">IT & Software</a>
-            <a href="" class="hover:text-indigo-400">Office Productivity</a>
+<div class="ml-12 mt-7 mr-12">
+    <div class="text  p-7">
+        <div class=" flex mb-7 md:flex p-5 bg-blue-600 rounded-xl text-white justify-center text-sm md:text-lg gap-5   ">
+            <a href="" class="hover:text-green-700">Devoplopment</a>
+            <a href="" class="hover:text-green-700">Business</a>
+            <a href="" class="hover:text-green-700">Finance & Accounting</a>
+            <a href="" class="hover:text-green-700">IT & Software</a>
+            <a href="" class="hover:text-green-700">Office Productivity</a>
         </div>
-        <div class="text-white bg-slate-900 text-center text-wrap">
-            <h1 class="text-4xl bold p-8">Build Real Skills. Learn From Experts. Grow Your Career.</h1>
-        </div>
-        <div class="text-wrap">
-            <h5 class="p-5 text-left ">“Access high-quality courses designed to help you gain practical knowledge, improve problem-solving skills, and become job-ready. Learn at your own pace with guidance from experienced instructors.”</h5>
+        <div class="p-5 bg-yellow-500 rounded-2xl shadow-xl">
+            <div class=" text-center p-5 ">
+                <div>
+                    <h1 class="mb-4 text-xl font-bold tracking-tight text-heading md:text-5xl lg:text-6xl">Build Real Skills. Learn From Experts.</h1>
+                </div>                
+                <div>
+                   <p class="mb-10  text-lg font-normal text-body lg:text-xl sm:px-16 xl:px-48"><span class="font-bold text-2xl">“</span>Access high-quality courses designed to help you gain practical, real-world knowledge and build the confidence needed to solve complex problems. Our carefully structured content goes beyond theory, focusing on hands-on learning, real-life scenarios, and industry-relevant skills that employers truly value. Whether you are just starting out or looking to advance your career, these courses are tailored to support your growth at every stage.<span class="font-bold text-2xl">”</span></p> 
+                </div>
+                <div>
+                  <a href="#" class="p-3 bg-blue-500 font-bold rounded-xl items-center text-white hover:bg-blue-700 ">Explore more</a>  
+                </div>
+                       
+            </div>
         </div>
     </div>
-    <div class=" ml-12 mt-7 mr-12">
-        <div class="flex m-3">
+    <div class="">
+        <div class="flex justify-center m-3">
             {% if user.is_superuser %}
             <div>
                 <img height="60px" width="60px" src="/static/images/admin.png" alt="">
             </div>
             {% else %} 
             <div>
-                <img height="60px" width="60px" src="/static/images/user-image.png" alt="">
+                <img height="60px" width="60px" src="/static/images/profile-pic.png" alt="">
             </div>
             {% endif %}
-            <div class="flex items-center pl-5 text-2xl font-bold">
-                <H1 class="">Welcome back <span class="animate-bounce font-extrabold italic text-indigo-400">{{user.username}}</span></H1>
+            <div class="flex items-center  pl-5 text-2xl font-bold">
+                <H1 class="">Welcome back <span class="uppercase font-bold italic ">{{user.username}}</span></H1>
             </div>
         </div>
-        <div id="default-carousel" class="relative mt-10" data-carousel="slide">
-            <div class="relative  overflow-hidden rounded-lg md:h-[500px]">
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="/static/images/1.png" class="absolute h-full block  w-full  object-cover" alt="...">
-                </div>
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="/static/images/2.png" class="absolute block h-full w-full object-cover" alt="...">
-                </div>
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>                                
-                    <img src="/static/images/3.png"     class="absolute block h-full w-full object-cover" alt="...">
-                </div>        
+        <div  class="relative mt-10" >
+            <div class="">
+                
             </div>
         </div>
         <div>
@@ -51,7 +51,8 @@
                 <H1 class="text-2xl font-bold ">Recomended for you</H1>
             </div>
         </div>
-        <div class="flex flex-row">
+        <div class="bg-yellow-500 p-10 shadow-2xl rounded-2xl">
+            <div class="grid geid-cols-1 md:flex md:flex-row">
             {% for item in course %}
             <a href="{% url 'myapp:detail' item.id %}">
             <div class="flex mr-6 rounded-2xl gap-2 text-black bg-slate-900 shadow-xl flex-col hover:bg-neutral-secondary-medium  p-6 justify-between">
@@ -68,6 +69,7 @@
             </div>
             </a>  
             {% endfor %}
+            </div>
         </div>
         <div>
             <div class="mt-6 mb-6">
@@ -138,13 +140,13 @@
             </a>  
             {% endfor %}
         </div>
-        <div class="flex justify-center mt-10 bg-blue-500 p-5 font-bold rounded-xl shadow-lg cursor-pointer">
-            <div class="">
-                <p> Our platform is designed to help you move beyond theory and start building real-world skills that make a difference. 
-                    Whether you're just starting out or looking to upgrade your knowledge, we provide carefully curated courses that 
-                    focus on practical learning, hands-on experience, and industry-relevant concepts.Learn from experienced instructors who simplify complex topics and guide you step-by-step through your learning journey. 
-                    With flexible access, you can learn anytime, anywhere, at your own pace — making it easier to stay consistent and motivated. From foundational concepts to advanced techniques, our goal is to help you gain confidence, improve problem-solving skills, 
-                    and prepare for real opportunities. Start today and take one step closer to achieving your personal and professional goals.
+        <div class="flex justify-center mt-10 bg-green-500 p-5 rounded-xl shadow-lg cursor-pointer">
+            <div>
+                <img src="{% static 'images/premium.jpg' %}" alt="">
+            </div>
+            <div class="flex">
+                <p>Unlock full access to all premium courses and resources with our membership plan for just ₹519 per month. Gain unlimited learning opportunities, including in-depth lessons, practical projects, and expert guidance designed to help you build real-world skills and advance your career.
+                With this membership, you can learn at your own pace, revisit content anytime, and stay consistent with your growth without any restrictions. Whether you're aiming to improve your problem-solving skills, master new technologies, or become job-ready, this plan gives you everything you need in one place.
                 </p>
             </div>
         </div>

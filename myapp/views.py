@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
+from .forms import  CourseForm
 # Create your views here.
 
 
@@ -14,13 +15,22 @@ def details(request, id):
 
 
 def instructor_dashboard(request):
+    if not hasattr(request.user, 'instructor'):
+        instructor = Instructor.objects.create(user=request.user)
     instructor = request.user.instructor
     course = Course.objects.filter(instructor=instructor)
     return render(request, 'instructor.html', {'my_course':course})
 
 
 def create_course(request):
-    pass
+    form = CourseForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect(instructor_dashboard)
+    else:
+        form = CourseForm()
+        return render(request, 'create_course.html', {'form':form})
 
 def update_course(request):
     pass

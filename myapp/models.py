@@ -8,7 +8,7 @@ class Instructor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100, null=True)
     image = models.ImageField(upload_to='static/images/instructor_images', default='static/images/profile-pic.png')
-    description =  models.TextField()
+    description =  models.TextField(blank=True, null=True)
     def __str__(self):
         return self.name
     
@@ -35,7 +35,7 @@ class Course(models.Model):
     instructor =  models.ForeignKey(Instructor, on_delete=models.CASCADE)
     category =  models.ForeignKey(SubCategory, on_delete=models.CASCADE, null=True)
     description =  models.TextField()
-    rating =  models.FloatField()
+    rating =  models.FloatField(null=True, blank=True)
     price =  models.FloatField()
     hours =  models.FloatField()
 
