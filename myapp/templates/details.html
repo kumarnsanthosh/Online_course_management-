@@ -2,8 +2,8 @@
 {% load static %}
 {% block  body %}
 <div class="min-h-screen ">
-  <div class="flex bg-slate-900 ">
-    <div class="h-80 pl-20 pt-15">
+  <div class="flex bg-slate-900 justify-between pb-10">
+    <div class="h-80 pl-20 pt-15  ">
       <h1 class="text-4xl text-white ">{{course.name}}</h1>
       <h2 class="text-white pt-2">created by : {% if course.instructor.user %} 
                                                   {{course.instructor.user.username}}
@@ -24,8 +24,12 @@
           <h4 class="text-white pl-2">{{course.hours}} Hours</h4>
       </div> 
     </div>
-    <div class="pl-10 mr-10">
-    <img class="rounded-2xl" src="{{course.image.url}}" alt="">
+    <div class="pl-10 mr-10 pt-8">
+      {% if course.image %}
+          <img class="rounded-2xl" src="{{ course.image.url }}">
+      {% else %}
+          <img class="rounded-2xl" src="{% static 'images/course_image.webp' %}">
+      {% endif %}
     </div>
   </div>
   <div class="ml-12 mt-5 mr-12">

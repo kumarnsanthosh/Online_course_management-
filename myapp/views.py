@@ -30,7 +30,7 @@ def create_course(request):
             return redirect(instructor_dashboard)
     else:
         form = CourseForm()
-        return render(request, 'create_course.html', {'form':form})
+    return render(request, 'create_course.html', {'form':form})
 
 def update_course(request):
     pass

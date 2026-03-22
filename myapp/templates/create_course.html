@@ -1,9 +1,45 @@
 {% extends 'base.html' %}
 {% block body %}
 <div class="min-h-screen">
-    <form action="" method="post">
+    <form method="POST">
         {% csrf_token %}
-        {{form}}
+        <div class="bg-white">
+            <div class="flex">
+                <label class="block mb-1">Course name</label>
+                <p>{{ form.name }}</p>
+            </div>
+
+            <div class="flex">
+                <label class="block mb-1">Thumbnail</label>
+                <p class="">{{ form.image }}</p>
+            </div>
+
+            <div class="flex">
+                <label class="block mb-1">Preview</label>
+                <p class="">{{ form.video }}</p>
+            </div>
+            
+            <div class="flex">
+                <label class="block mb-1">Category</label>
+                <p class="">{{ form.category }}</p>
+            </div>
+            <div class="flex">
+                <label class="block mb-1">Desription</label>
+                <p class="">{{ form.description }}</p>
+            </div>
+            <div class="flex">
+                <label class="block mb-1">Price</label>
+                <p class="">{{ form.price }}</p>
+            </div>
+            <div class="flex">
+                <label class="block mb-1">hours</label>
+                <p class="">{{ form.hours }}</p>
+            </div>
+
+            <button type="submit" class="mt-4 bg-blue-600 cursor-pointer text-white px-4 py-2 rounded">
+                Save
+            </button>
+        </div>
     </form>
 </div>
 

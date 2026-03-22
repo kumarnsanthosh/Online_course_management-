@@ -10,7 +10,7 @@ class Instructor(models.Model):
     image = models.ImageField(upload_to='static/images/instructor_images', default='static/images/profile-pic.png')
     description =  models.TextField(blank=True, null=True)
     def __str__(self):
-        return self.name
+        return self.name or 'instructor'
     
 
 
@@ -27,11 +27,11 @@ class SubCategory(models.Model):
 
 class Course(models.Model):
     def __str__(self):
-        return self.name
-
+        return self.name 
+        
     name =  models.CharField(max_length=100)
-    image =  models.ImageField(upload_to='static/images/course_images')
-    video =  models.FileField(upload_to='static/video_upload', null=True, validators= [FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])])
+    image =  models.ImageField(upload_to='static/images/course_images',null=True, blank=True)
+    video =  models.FileField(upload_to='static/video_upload', null=True, blank=True, validators= [FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])])
     instructor =  models.ForeignKey(Instructor, on_delete=models.CASCADE)
     category =  models.ForeignKey(SubCategory, on_delete=models.CASCADE, null=True)
     description =  models.TextField()
