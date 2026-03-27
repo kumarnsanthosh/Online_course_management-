@@ -7,10 +7,12 @@ from django.contrib.auth.models import User
 class Instructor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=100, blank=True, null=True)
-    image = models.ImageField(upload_to='instructor_images/')
+    image   = models.ImageField(upload_to='instructor_images/')
     description =  models.TextField(blank=True, null=True)
     def __str__(self):
-        return self.name or 'instructor'
+        if self.user:
+            return self.user.username
+        return self.name or "Instructor"
     
 
 
@@ -35,9 +37,18 @@ class Course(models.Model):
     instructor =  models.ForeignKey(Instructor, on_delete=models.CASCADE, related_name='courses')
     category =  models.ForeignKey(SubCategory, on_delete=models.CASCADE, null=True)
     description =  models.TextField()
-    rating =  models.FloatField(default=0)
+    rating =  models.FloatField(default=4)
     price =  models.FloatField()
+    discount = models.FloatField(default=86.67)
     hours =  models.FloatField()
+
+    @property
+    def discount_amount(self):
+        return round((self.price * self.discount)/100)
+    
+    @property
+    def sell_price(self):
+        return round(self.price - self.discount_amount)
 
 
 

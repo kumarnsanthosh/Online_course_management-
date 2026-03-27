@@ -110,7 +110,7 @@
           {% if course.instructor.image %}
               <img height="150px" width="150px" src="{{ course.instructor.image.url }}" alt="Instructor">
           {% else %}
-              <img src="/static/images/user-image.png" alt="Default">
+              <img src="{% static 'images/profile-pic.png' %}" alt="Default">
           {% endif %}
         </div>
         <div class="flex justify-items">

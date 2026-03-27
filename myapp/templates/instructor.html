@@ -16,11 +16,43 @@
                 </div>
             </div>
             {% else %}
-            <p>your courses</p>
+            
             <div class="flex justify-center rounded-xl">
-                    <a class="shadow-lg bg-blue-500 rounded-xl pr-5 pl-5 pt-3 pb-3" href="{% url 'myapp:create_course' %}">Create Your Course</a>
+                <a class="shadow-lg bg-blue-500 rounded-xl pr-5 pl-5 pt-3 pb-3" href="{% url 'myapp:create_course' %}">Create Your Course</a>
+                <div class="bg-yellow-500 p-10 shadow-2xl rounded-2xl">
+                    <div class="grid geid-cols-1 md:flex md:flex-row">
+                    {% for item in my_course %}
+                    <a href="">
+                    <div class="flex mr-6 rounded-2xl gap-2 text-black bg-slate-900 shadow-xl flex-col hover:bg-neutral-secondary-medium  p-6 justify-between">
+                        {% if item.image %}
+                            <img class="rounded-xl object-fit " src="{{ item.image }}" alt="">
+                        {% else %} 
+                             <img class="rounded-xl object-fit " src="{% static 'images/course_image.webp' %}" alt="">
+                        {% endif %}
+                            <H1 class="text-md line-clamp-2 min-h-[50px] text-white font-semibold">{{item.name}}</H1>
+                            <H1 class="text-xs text-white font-bold">{{item.instructor.username}}</H1>
+                            <H1 class="text-2xl text-green-600 font-bold">${{item.price}}</H1>
+                            <H1 class="font-bold text-lg text-yellow-300">⭐{{item.rating}}</H1>
+                            
+                            <div class="flex justify-center pt-2 gap-4 ">
+                                <a href="{% url 'myapp:update_course' item.id %}" class=" inline-flex items-center cursor-pointer text-white font-bold text-sm bg-indigo-600 hover:bg-indigo-800 rounded-xl p-2 ">Update course</a>
+                                <a href="{% url 'myapp:delete_course' item.id %}" class="inline-flex items-center text-white font-bold text-sm bg-red-600 hover:text-red-800 rounded-xl p-2 ">Delete course</a>
+                                
+                            </div>      
+                    </div>
+                    </a>  
+                    {% endfor %}
+                    </div>
+                </div>
             </div>
             {% endif %}
+        </div>
+        <div>
+            <a href="" id="instructor-profile">
+                <img src="{{request.user.image}}" alt="">
+               <p>{{instructor}}</p>
+               <p>{{instructor.descrition}}</p>
+            </a>
         </div>
     </div>
 </div>

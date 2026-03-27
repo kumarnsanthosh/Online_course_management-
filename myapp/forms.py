@@ -6,8 +6,22 @@ class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
         fields = ['name', 'image', 'video', 'category', 'description',  'price', 'hours']
-        # widgets = {
-        #     'phone': forms.TextInput(attrs={'class': 'w-full border p-2 rounded'}),
-        #     'address': forms.TextInput(attrs={'class': 'w-full border p-2 rounded'}),
-        #     'bio': forms.Textarea(attrs={'class': 'w-full border p-2 rounded'}),
-        # } 
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'w-full border p-2 rounded'
+            }),
+            'category': forms.Select(attrs={
+                'class': 'w-full border p-2 rounded'
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'w-full border p-2 rounded'
+            }),
+            'price': forms.NumberInput(attrs={
+                'class': 'w-full border p-2 rounded'
+            }),
+            'hours': forms.NumberInput(attrs={
+                'class': 'w-full border p-2 rounded'
+            }),
+        }
+
+
