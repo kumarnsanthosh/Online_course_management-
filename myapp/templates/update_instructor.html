@@ -14,7 +14,7 @@
     {% if instructor.image %}
       <img src="{{ instructor.image.url }}" class="w-24 h-24 rounded-full mx-auto">
     {% else %}
-      <img src="{% static 'images/user-image.png' %}" class="w-24 h-24 rounded-full mx-auto">
+      <img src="{% static 'images/profile-pic.png' %}" class="w-24 h-24 rounded-full mx-auto">
     {% endif %}
 
     <input type="text" name="name" value="{{ instructor.name }}"

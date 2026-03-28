@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load static %}
+{% csrf_token %}
+{% block body %}
+<div class="min-h-screen">
+    <div class="m-3 md:m-10">
+        <div class="flex flex-col gap-6 ">
+            
+            {% if text %}
+            <h1 class="text-4xl font-bold">Search result:</h1>
+            <div class="grid grid-cols-1 m gap-4 mt-4 md:grid-cols-3 lg:grid-cols-4">
+            {% for item in text %}
+            <a href="{% url 'myapp:detail' item.id %}">
+            <div class="flex md:flex-col mr-6 rounded-2xl gap-2 text-black bg-slate-900 shadow-xl :bg-neutral-secondary-medium  p-6 justify-between">
+                <div>
+                     {% if item.image %}
+                    <img class="rounded-md object-fit" src="{{ item.image.url }}" alt="">
+                    {% else %}
+                        <img class="rounded-md object-fit" src="/static/images/course_image.webp" alt="">
+                    {% endif %}  
+                </div>
+                <div>
+                    <H1 class="lg:text-md text-xs line-clamp-2 h-[30px] text-white  font-semibold md:text-lg">{{item.name}}</H1>
+                    <H1 class="text-xs text-white ">{{item.instructor.name}}</H1>
+                </div>               
+                
+                <div class="flex">
+                    <span class="md:text-lg text-xs flex font-medium text-green-300 text-heading line-through">₹{{ item.discount_amount }}/-</span><span class="ms-3 text-xs md:text-lg text-green-400 font-medium text-heading">₹{{ item.sell_price }}/-</span>
+                </div>
+                
+
+                <H1 class="font-bold text-xs lg:text-lg text-yellow-300 md:text-lg">⭐{{item.rating}}</H1>
+                
+                <div class="flex justify-center pt-2 gap-2">
+                    <button class="inline-flex items-center  text-white lg:font-bold text-xs lg:text-lg bg-indigo-400 rounded-xl md:p-2 ">Premium</button>
+                    <button class="bg-blue-300 md:p-2 md:text-md rounded-xl lg:font-bold text-xs p-2  rounded-xl">bestseller</button>
+                </div>      
+            </div>      
+            {% endfor %} 
+        </div>
+        {% else %}
+        <div class="flex flex-col items-center mt-10">
+            <div>
+                <h1 class="text-5xl pb-5">Sorry, we couldn't find any results for <span class="underline text-red-500">{{input_text}}</span></h1>
+        
+            <h2 class="text-2xl pb-3">Try adjusting your search. Here are some ideas:</h2>
+            <div class="items-center">
+                <ul class="list-inside list-disc font-bold ">
+                <li>Make sure all words are spelled correctly</li>
+                <li>Try different search terms</li>
+                <li>Try more general search terms</li>
+            </ul>
+            </div>
+            
+            </div>
+        </div>
+
+            
+        {% endif %} 
+    </div>    
+</div>
+{% endblock %}

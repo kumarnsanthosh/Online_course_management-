@@ -1,9 +1,8 @@
-<H1 class="text-xs text-white font-bold">{{item.instructor.username}}</H1>
+{% for sub in subcategories %}
+    <h2>{{ sub.name }}</h2>
 
+    {% for course in sub.course_set.all %}
+        <p>{{ course.name }}</p>
+    {% endfor %}
 
-
-<h2 class="text-white pt-2">created by : {% if course.instructor.user %} 
-                                                  {{course.instructor.user.username}}
-                                                {% else %}
-                                                  {{course.instructor.name}}
-                                                {% endif %}</h2>
+{% endfor %}

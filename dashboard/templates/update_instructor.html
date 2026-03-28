@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Instructor - Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-3xl mx-auto">
+    <!-- Header -->
+    <div class="bg-white rounded-lg shadow-md p-6 sm:p-8 mb-6">
+      <div class="flex items-center justify-between mb-6">
+        <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">Edit Instructor</h1>
+        <a href="{% url 'dashboard:view_instructor' instructor.id %}" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-lg transition">
+          Cancel
+        </a>
+      </div>
+      <p class="text-gray-600">Update instructor details and profile information</p>
+    </div>
+
+    <!-- Edit Form -->
+    <div class="bg-white rounded-lg shadow-md p-6 sm:p-8">
+      <form method="POST" enctype="multipart/form-data" class="space-y-6">
+        {% csrf_token %}
+
+        <!-- Display Form Errors -->
+        {% if form.non_field_errors %}
+        <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg">
+          {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <!-- Instructor Name -->
+        <div>
+          <label for="id_name" class="block text-sm font-medium text-gray-900 mb-2">
+            Instructor Name <span class="text-red-500">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="id_name" 
+            name="name" 
+            value="{% if form.name.value %}{{ form.name.value }}{% else %}{{ instructor.name }}{% endif %}" 
+            required
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+            placeholder="Enter instructor name">
+          {% if form.name.errors %}
+            <div class="text-red-500 text-sm mt-1">
+              {% for error in form.name.errors %}
+                <p>{{ error }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+
+        <!-- Instructor Description -->
+        <div>
+          <label for="id_description" class="block text-sm font-medium text-gray-900 mb-2">
+            Bio / Description
+          </label>
+          <textarea 
+            id="id_description" 
+            name="description" 
+            rows="5"
+            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition"
+            placeholder="Enter instructor bio or description">{% if form.description.value %}{{ form.description.value }}{% else %}{{ instructor.description }}{% endif %}</textarea>
+          {% if form.description.errors %}
+            <div class="text-red-500 text-sm mt-1">
+              {% for error in form.description.errors %}
+                <p>{{ error }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+          <p class="text-sm text-gray-500 mt-1">Add details about the instructor's background and expertise</p>
+        </div>
+
+        <!-- Current Image Display -->
+        {% if instructor.image %}
+        <div>
+          <label class="block text-sm font-medium text-gray-900 mb-3">Current Profile Image</label>
+          <div class="bg-gray-100 rounded-lg p-4 flex items-center space-x-4">
+            <img src="{{ instructor.get_image_url }}" alt="{{ instructor.name }}" class="w-24 h-24 object-cover rounded-lg shadow">
+            <div>
+              <p class="text-sm text-gray-600 font-medium">{{ instructor.image.name }}</p>
+              <p class="text-xs text-gray-500 mt-1">Upload a new image to replace this one</p>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <div>
+          <label class="block text-sm font-medium text-gray-900 mb-2">Profile Image</label>
+          <div class="bg-gray-100 rounded-lg p-4 text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto text-gray-400 mb-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15a7.488 7.488 0 00-5.982 3.725M9 9a3 3 0 116 0 3 3 0 01-6 0zm6 0a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <p class="text-sm text-gray-600">No image currently set. Upload one below.</p>
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Image Upload -->
+        <div>
+          <label for="id_image" class="block text-sm font-medium text-gray-900 mb-2">
+            Upload New Image
+          </label>
+          <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-blue-400 transition cursor-pointer" id="dropZone">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 mx-auto text-gray-400 mb-2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33A3 3 0 0116.5 19.5H6.75z" />
+            </svg>
+            <p class="text-gray-600 font-medium">Drag and drop image here</p>
+            <p class="text-gray-500 text-sm mt-1">or click to browse</p>
+            <input 
+              type="file" 
+              id="id_image" 
+              name="image" 
+              accept="image/*"
+              class="hidden">
+          </div>
+          {% if form.image.errors %}
+            <div class="text-red-500 text-sm mt-2">
+              {% for error in form.image.errors %}
+                <p>{{ error }}</p>
+              {% endfor %}
+            </div>
+          {% endif %}
+          <p class="text-xs text-gray-500 mt-2">Supported formats: JPG, PNG, WebP. Max size: 5MB</p>
+        </div>
+
+        <!-- Image Preview -->
+        <div id="imagePreview" style="display: none;">
+          <label class="block text-sm font-medium text-gray-900 mb-2">Image Preview</label>
+          <div class="bg-gray-100 rounded-lg p-4">
+            <img id="previewImg" src="" alt="Preview" class="max-w-full max-h-64 mx-auto rounded-lg shadow">
+          </div>
+        </div>
+
+        <!-- Courses Section (Display Only) -->
+        <div>
+          <label class="block text-sm font-medium text-gray-900 mb-3">Courses Taught ({{ courses.count }})</label>
+          {% if courses %}
+          <div class="space-y-2 max-h-40 overflow-y-auto">
+            {% for course in courses %}
+            <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg border border-gray-200">
+              <div class="flex-1">
+                <p class="text-sm font-medium text-gray-900">{{ course.name }}</p>
+                <p class="text-xs text-gray-500 mt-1">Rating: {{ course.rating|floatformat:1 }} ⭐</p>
+              </div>
+              <span class="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded font-medium">Active</span>
+            </div>
+            {% endfor %}
+          </div>
+          {% else %}
+          <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 text-center text-gray-600">
+            <p class="text-sm">This instructor hasn't created any courses yet</p>
+          </div>
+          {% endif %}
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex gap-3 pt-6 border-t border-gray-200">
+          <button 
+            type="submit" 
+            class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition">
+            Save Changes
+          </button>
+          <a 
+            href="{% url 'dashboard:view_instructor' instructor.id %}" 
+            class="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-900 font-bold py-2 px-4 rounded-lg transition text-center">
+            Cancel
+          </a>
+          <a 
+            href="{% url 'dashboard:delete_instructor' instructor.id %}" 
+            class="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg transition text-center">
+            Delete
+          </a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

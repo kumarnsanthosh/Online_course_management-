@@ -1,4 +1,3 @@
-
 {% extends 'base.html' %}
 {% block body %}
 {% load static %}
@@ -58,13 +57,13 @@
                 <H1 class="text-2xl font-bold ">Recomended for you</H1>
                 <hr class="mt-2 border-t-4 border-gray-800">
             </div>
-            <div class="grid geid-cols-1 md:flex md:flex-row">
+            <div class="grid grid-cols-2 m gap-6 mt-4 md:grid-cols-3 lg:grid-cols-4">
             {% for item in course %}
             <a href="{% url 'myapp:detail' item.id %}">
             <div class="flex mr-6 rounded-2xl gap-2 text-black bg-slate-900 shadow-xl flex-col hover:bg-neutral-secondary-medium  p-6 justify-between">
                 <img class="rounded-xl object-fit " src="{{item.image.url}}" alt="">  
                     <H1 class="text-md line-clamp-2 min-h-[50px] text-white font-semibold">{{item.name}}</H1>
-                    <H1 class="text-xs text-white font-bold">{{item.instructor.username}}</H1>
+                    <H1 class="text-xs text-white font-bold">{{item.instructor.name}}</H1>
                     <div class="flex">
                         <span class="text-lg flex font-medium text-green-300 text-heading line-through">₹{{ item.discount_amount }}/-</span><span class="ms-3 text-lg text-green-400 font-medium text-heading">₹{{ item.sell_price }}/-</span>
                     </div>
@@ -81,83 +80,96 @@
             {% endfor %}
             </div>
         </div>
-        <div>
-            <div class="mt-6 mb-6">
-                <H1 class="text-2xl font-bold">Trending courses</H1>
-            </div>
-        </div>
-        <div class="flex flex-row">
-            {% for item in course %}
-            <a href="{% url 'myapp:detail' item.id %}">
-            <div class="flex mr-6 rounded-2xl gap-2 text-black bg-slate-900 shadow-xl flex-col hover:bg-neutral-secondary-medium  p-6 justify-between">
-                <img class="rounded-xl object-fit " src="{{item.image.url}}" alt="">  
-                    <H1 class="text-md line-clamp-2 min-h-[50px] text-white font-semibold">{{item.name}}</H1>
-                    <H1 class="text-xs text-white font-bold">{{item.instructor.username}}</H1>
-                    <H1 class="text-2xl text-green-600 font-bold">${{item.price}}</H1>
-                    <H1 class="font-bold text-lg text-yellow-300">⭐{{item.rating}}</H1>
-                    
-                    <div class="flex justify-center pt-2 gap-4">
-                        <button class="inline-flex items-center text-white font-bold text-sm bg-indigo-400 rounded-xl p-2 ">Premium</button>
-                        <button class="bg-blue-300 p-2 font-bold text-sm rounded-xl">bestseller</button>
-                    </div>      
-            </div>
-            </a>  
-            {% endfor %}
-        </div>
-        <div>
-            <div class="mt-6 mb-6">
-                <H1 class="text-2xl font-bold">Web development courses</H1>
-            </div>
-        </div>
-        <div class="flex flex-row">
-            {% for item in course %}
-            <a href="{% url 'myapp:detail' item.id %}">
-            <div class="flex mr-6 rounded-2xl gap-2 text-black bg-slate-900 shadow-xl flex-col hover:bg-neutral-secondary-medium  p-6 justify-between">
-                <img class="rounded-xl object-fit " src="{{item.image.url}}" alt="">  
-                    <H1 class="text-md line-clamp-2 min-h-[50px] text-white font-semibold">{{item.name}}</H1>
-                    <H1 class="text-xs text-white font-bold">{{item.instructor.username}}</H1>
-                    <H1 class="text-2xl text-green-600 font-bold">${{item.price}}</H1>
-                    <H1 class="font-bold text-lg text-yellow-300">⭐{{item.rating}}</H1>
-                    
-                    <div class="flex justify-center pt-2 gap-4">
-                        <button class="inline-flex items-center text-white font-bold text-sm bg-indigo-400 rounded-xl p-2 ">Premium</button>
-                        <button class="bg-blue-300 p-2 font-bold text-sm rounded-xl">bestseller</button>
-                    </div>      
-            </div>
-            </a>  
-            {% endfor %}
-        </div>
-        <div>
-            <div class="mt-6 mb-6">
-                <H1 class="text-2xl font-bold">AI courses</H1>
-            </div>
-        </div>
-        <div class="flex flex-row">
-            {% for item in course %}
-            <a href="{% url 'myapp:detail' item.id %}">
-            <div class="flex mr-6 rounded-2xl gap-2 text-black bg-slate-900 shadow-xl flex-col hover:bg-neutral-secondary-medium  p-6 justify-between">
-                <img class="rounded-xl object-fit " src="{{item.image.url}}" alt="">  
-                    <H1 class="text-md line-clamp-2 min-h-[50px] text-white font-semibold">{{item.name}}</H1>
-                    <H1 class="text-xs text-white font-bold">{{item.instructor.username}}</H1>
-                    <H1 class="text-2xl text-green-600 font-bold">${{item.price}}</H1>
-                    <H1 class="font-bold text-lg text-yellow-300">⭐{{item.rating}}</H1>
-                    
-                    <div class="flex justify-center pt-2 gap-4">
-                        <button class="inline-flex items-center text-white font-bold text-sm bg-indigo-400 rounded-xl p-2 ">Premium</button>
-                        <button class="bg-blue-300 p-2 font-bold text-sm rounded-xl">bestseller</button>
-                    </div>      
-            </div>
-            </a>  
-            {% endfor %}
-        </div>
-        <div class=" mt-10 h-full w-full bg-green-500 p-5 rounded-xl shadow-lg cursor-pointer">
-            <img class="float-left h-35 w-35" src="{% static 'images/premium.jpg' %}" alt="">
-            <img class="float-right h-35 w-35" src="{% static 'images/premium.jpg' %}" alt="">
+                    {% for sub in subcategories %}
 
-            <p class="clear-none">Unlock full access to all premium courses and resources with our membership plan for just ₹519 per month. Gain unlimited learning opportunities, including in-depth lessons, practical projects, and expert guidance designed to help you build real-world skills and advance your career.
-                With this membership, you can learn at your own pace, revisit content anytime, and stay consistent with your growth without any restrictions. Whether you're aiming to improve your problem-solving skills, master new technologies, or become job-ready, this plan gives you everything you need in one place.
-            </p>
+                <!-- Subcategory Title -->
+                <h2 class="text-2xl font-bold text-white mt-8 mb-4">
+                    {{ sub.name }}
+                </h2>
+
+                <!-- Grid Layout -->
+                <div class="grid grid-cols-2 gap-6 mt-4 md:grid-cols-3 lg:grid-cols-4">
+
+                    {% for item in sub.course_set.all|slice:":8" %}
+                    <a href="{% url 'myapp:detail' item.id %}">
+
+                        <div class="flex rounded-2xl gap-2 text-black bg-slate-900 shadow-xl flex-col hover:bg-neutral-700 p-4 justify-between">
+                            
+                            <!-- Image -->
+                            {% if item.image %}
+                            <img class="rounded-xl object-cover h-[150px] w-full" src="{{ item.image.url }}" alt="">
+                            {% endif %}
+
+                            <!-- Title -->
+                            <h1 class="text-md line-clamp-2 min-h-[50px] text-white font-semibold">
+                                {{ item.name }}
+                            </h1>
+
+                            <!-- Instructor -->
+                            <h1 class="text-xs text-white font-bold">
+                                {{ item.instructor.name }}
+                            </h1>
+
+                            <!-- Price -->
+                            <div class="flex">
+                                <span class="text-lg flex font-medium text-green-300 line-through">
+                                    ₹{{ item.discount_amount }}/-
+                                </span>
+                                <span class="ms-3 text-lg text-green-400 font-medium">
+                                    ₹{{ item.sell_price }}/-
+                                </span>
+                            </div>
+
+                            <!-- Rating -->
+                            <h1 class="font-bold text-lg text-yellow-300">
+                                ⭐{{ item.rating }}
+                            </h1>
+
+                            <!-- Tags -->
+                            <div class="flex justify-center pt-2 gap-4">
+                                <button class="text-white font-bold text-sm bg-indigo-400 rounded-xl p-2">
+                                    Premium
+                                </button>
+                                <button class="bg-blue-300 p-2 font-bold text-sm rounded-xl">
+                                    Bestseller
+                                </button>
+                            </div>
+
+                        </div>
+
+                    </a>
+                    {% endfor %}
+
+                </div>
+
+{% endfor %}
+        
+        <div class="mt-10 w-full bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-2xl shadow-xl flex flex-col md:flex-row items-center gap-6">
+
+    <!-- Left Image -->
+    <img class="h-28 w-28 md:h-32 md:w-32 object-cover rounded-xl shadow-md" 
+         src="{% static 'images/premium.jpg' %}" alt="">
+
+    <!-- Content -->
+    <div class="flex-1 text-white">
+        <h2 class="text-2xl font-bold mb-2">
+            Premium Membership 🚀
+        </h2>
+
+        <p class="text-sm md:text-base leading-relaxed text-green-100">
+            Unlock full access to our entire library of premium courses and learning resources for just ₹519/month. Dive into expertly crafted lessons, hands-on projects, and real-world scenarios designed to help you build practical, job-ready skills. Stay ahead in your career with continuous learning, structured guidance, and unlimited access—anytime, anywhere.
+        </p>
+
+        <!-- Button -->
+        <div class="mt-4">
+            <button class="bg-white text-green-600 font-bold px-5 py-2 rounded-xl hover:bg-gray-100 transition">
+                Get Premium
+            </button>
         </div>
+    </div>
+
+    
+</div>
         
     </div>
 </div>              

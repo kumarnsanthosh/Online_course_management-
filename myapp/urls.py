@@ -12,4 +12,5 @@ urlpatterns = [ path('', index, name='index'),
                 path('become-instructor/', become_instructor, name='become_instructor'),
                 path('update_instructor/', update_instructor, name='update_instructor'),
                 path('delete_instructor/', delete_instructor, name='delete_instructor'),
+                path('search-result/', search, name='search'),
             ]

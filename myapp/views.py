@@ -4,12 +4,22 @@ from .forms import  CourseForm
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.decorators import login_required
 
+
 # Create your views here.
 
 
+@login_required
+def admin_panel(request):
+    if not request.user.is_superuser:
+        return redirect('myapp:index')
+    
+    
+    return render(request, 'admin_panel.html')
+
 def index(request):
-    course  = Course.objects.all()[:4]
-    return render(request, 'index.html',{'course': course})
+    trending_course  = Course.objects.all()[:4]
+    subcategories = SubCategory.objects.prefetch_related('course_set')[:4]
+    return render(request, 'index.html',{'course': trending_course , 'subcategories':subcategories})
 
 
 def details(request, id):
@@ -126,6 +136,12 @@ def delete_instructor(request):
     return render(request, 'delete_instructor.html', {'instructor': instructor})
 
 
+def search(request):
+    input_text = request.GET.get('search', '')
+    print(input_text)
+    text = Course.objects.filter(name__contains=input_text)
+    return render(request, 'search_result.html', {'text':text, 'input_text':input_text})
+
 def create_student(request):
     pass
 
@@ -137,3 +153,5 @@ def view_student(request):
 
 def delete_student(request):
     pass
+
+

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Course
+from .models import Course, Instructor
 
 
 class CourseForm(forms.ModelForm):
@@ -21,6 +21,27 @@ class CourseForm(forms.ModelForm):
             }),
             'hours': forms.NumberInput(attrs={
                 'class': 'w-full border p-2 rounded'
+            }),
+        }
+
+
+class InstructorForm(forms.ModelForm):
+    class Meta:
+        model = Instructor
+        fields = ['name', 'description', 'image']
+        widgets = {
+            'name': forms.TextInput(attrs={
+                'class': 'w-full border p-2 rounded',
+                'placeholder': 'Enter instructor name'
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'w-full border p-2 rounded',
+                'placeholder': 'Enter instructor bio or description',
+                'rows': 5
+            }),
+            'image': forms.FileInput(attrs={
+                'class': 'hidden',
+                'accept': 'image/*'
             }),
         }
 

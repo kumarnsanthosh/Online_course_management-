@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="min-h-screen bg-gray-50 py-8">
+  <div class="px-4 sm:px-6 lg:px-12">
+    <!-- Header Section -->
+    <div class="mb-8">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">All Instructors</h1>
+      <p class="text-gray-600 mt-2">Manage and view all instructors on the platform</p>
+      <hr class="mt-4 border-t-2 border-gray-300">
+    </div>
+
+    <!-- Instructors Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+      {% for instructor in instructors %}
+      <div class="max-w-sm bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden">
+        <!-- Instructor Image -->
+        <div class="relative h-24 sm:h-28  flex items-center justify-center overflow-hidden">
+          
+          {% if instructor.image %}
+            <img src="{{ instructor.image.url }}" class="w-24 h-24 rounded-full mx-auto">
+            {% else %}
+            <img src="{% static 'images/profile-pic.png' %}" class="w-24 h-24 rounded-full mx-auto">
+            {% endif %}
+
+        </div>
+
+        <!-- Instructor Info -->
+        <div class="p-3 sm:p-4">
+          <!-- Name -->
+          <h2 class="text-lg sm:text-xl font-bold text-gray-900 truncate">
+            {{ instructor.name }}
+          </h2>
+
+          <!-- Description -->
+          <p class="text-sm text-gray-600 mt-2 line-clamp-2">
+            {{ instructor.description|truncatewords:15 }}
+          </p>
+
+          <!-- Stats -->
+          <div class="mt-4 pt-4 border-t border-gray-200">
+            <div class="flex justify-between text-sm">
+              <span class="text-gray-600">Courses Created:</span>
+              <span class="font-bold text-blue-600">{{ instructor.courses.count }}</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="mt-3 flex gap-1">
+            <a href="{% url 'dashboard:view_instructor' instructor.id %}" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded text-xs text-center">
+              View
+            </a>
+            <a href="{% url 'dashboard:update_instructor' instructor.id %}" class="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-2 rounded text-xs text-center">
+              Edit
+            </a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Empty State -->
+    {% if not instructors %}
+    <div class="text-center py-16">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-16 h-16 mx-auto text-gray-400 mb-4">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M15 11.727A3.375 3.375 0 009.75 15.75h7.5A3.375 3.375 0 0015 11.727m-4.5 0L12 8.25m0 3.477V8.25" />
+      </svg>
+      <h3 class="text-lg font-semibold text-gray-900">No Instructors Found</h3>
+      <p class="text-gray-600 mt-1">Start by adding your first instructor to the platform.</p>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+
+{% endblock %}
