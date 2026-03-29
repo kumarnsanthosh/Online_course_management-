@@ -142,6 +142,37 @@ def search(request):
     text = Course.objects.filter(name__contains=input_text)
     return render(request, 'search_result.html', {'text':text, 'input_text':input_text})
 
+
+@login_required
+def view_cart(request):
+    cart_items = Cart.objects.filter(user=request.user).select_related('course')
+    total_price = sum(item.course.sell_price for item in cart_items)
+    total_original_price = sum(item.course.price for item in cart_items)
+    total_savings = total_original_price - total_price
+    
+    context = {
+        'cart_items': cart_items,
+        'total_price': total_price,
+        'total_original_price': total_original_price,
+        'total_savings': total_savings,
+    }
+    return render(request, 'cart.html', context)
+
+
+@login_required
+def add_to_cart(request, course_id):
+    course = get_object_or_404(Course, id=course_id)
+    cart_item, created = Cart.objects.get_or_create(user=request.user, course=course)
+    return redirect('myapp:view_cart')
+
+
+@login_required
+def remove_from_cart(request, cart_id):
+    cart_item = get_object_or_404(Cart, id=cart_id, user=request.user)
+    cart_item.delete()
+    return redirect('myapp:view_cart')
+
+
 def create_student(request):
     pass
 

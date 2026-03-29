@@ -6,3 +6,9 @@
     {% endfor %}
 
 {% endfor %}
+
+ {% if item.image %}
+                        <img class="rounded-xl object-fit " src="{{item.image.url}}" alt="">  
+                    {% else %}
+                        <img class="rounded-xl object-fit " src="{% static 'images/course_image.webp' %}" alt="">
+                    {% endif %

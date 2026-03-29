@@ -13,4 +13,7 @@ urlpatterns = [ path('', index, name='index'),
                 path('update_instructor/', update_instructor, name='update_instructor'),
                 path('delete_instructor/', delete_instructor, name='delete_instructor'),
                 path('search-result/', search, name='search'),
+                path('cart/', view_cart, name='view_cart'),
+                path('cart/add/<int:course_id>/', add_to_cart, name='add_to_cart'),
+                path('cart/remove/<int:cart_id>/', remove_from_cart, name='remove_from_cart'),
             ]

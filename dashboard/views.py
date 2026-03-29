@@ -113,3 +113,13 @@ def delete_instructor(request, id):
     }
     return render(request, 'delete_instructor.html', context)
 
+
+def index(request):
+    data_points = [
+        { "label": "apple",  "y": 10  },
+        { "label": "orange", "y": 15  },
+        { "label": "banana", "y": 25  },
+        { "label": "mango",  "y": 30  },
+        { "label": "grape",  "y": 28  }
+    ]
+    return render(request, 'admin_dashboard.html', { "data_points" : data_points }) 

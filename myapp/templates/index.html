@@ -1,19 +1,10 @@
 {% extends 'base.html' %}
 {% block body %}
 {% load static %}
+
 <div class="ml-12  mr-12">
-    <div class=" l rounded-2xl pt-5 scroll-smooth">
-        <div class=" flex mb-7 md:flex p-5 font-bold md:block   justify-center text-xs lg:text-lg gap-5">
-            <a href="" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br gap-2 flex pl-9 pr-9 pt-2 pb-2 rounded-xl  "><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide  lucide-arrow-big-up-icon lucide-arrow-big-up"><path d="M9 19a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-6a1 1 0 0 1 1-1h3.293a.707.707 0 0 0 .5-1.207l-7.086-7.086a1 1 0 0 0-1.414 0l-7.086 7.086a.707.707 0 0 0 .5 1.207H8a1 1 0 0 1 1 1z"/></svg>Devoplopment</a>
-            
-            <a href="" class="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br flex gap-2 pl-9 pr-9 pt-2 pb-2 rounded-xl "><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2-icon lucide-building-2"><path d="M10 12h4"/><path d="M10 8h4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/></svg>Business</a>
-            
-            <a href="" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br pl-9 pr-9 pt-2 pb-2 rounded-xl flex gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-dollar-sign-icon lucide-badge-dollar-sign"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>Finance & Accounting</a>
-            
-            <a href="" class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br flex gap-2 pl-9 pr-9 pt-2 pb-2 rounded-xl  "><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-code-icon lucide-folder-code"><path d="M10 10.5 8 13l2 2.5"/><path d="m14 10.5 2 2.5-2 2.5"/><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/></svg>IT & Software</a>
-            
-            <a href="" class="text-heading bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br flex gap-2 pl-9 pr-9 pt-2 pb-2 rounded-xl  "><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-code-icon lucide-folder-code"><path d="M10 10.5 8 13l2 2.5"/><path d="m14 10.5 2 2.5-2 2.5"/><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/></svg>Office Productivity</a>
-        </div>
+    <div class="rounded-2xl pt-5 scroll-smooth">
+
         <div class="flex justify-center m-3">
             {% if user.is_superuser %}
             <div>
@@ -28,149 +19,154 @@
                 <H1 class="">Welcome back <span class="uppercase font-bold bg-clip-text bg-gradient-to-r italic from-green-400 via-green-500 to-green-600">{{user.username}}</span></H1>
             </div>
         </div>
-        <div class="p-5  mt-5 rounded-2xl shadow-xl">
+        <div class="bg-white p-5 mt-5 rounded-2xl shadow-xl">
             <div class=" text-center p-5 ">
                 <div class="">
                     <h1 class="mb-4 text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 text-xl font-bold tracking-tight text-heading md:text-5xl lg:text-6xl">Build Real Skills. Learn From Experts.</h1>
                 </div>                
                 <div class=" rounded-2xl ">
-                   <p class="mb-10  text-lg font-normal text-body lg:text-xl sm:px-16 xl:px-48"><span class="font-bold text-2xl">“</span>Access high-quality courses designed to help you gain practical, real-world knowledge and build the confidence needed to solve complex problems. Our carefully structured content goes beyond theory, focusing on hands-on learning, real-life scenarios, and industry-relevant skills that employers truly value. Whether you are just starting out or looking to advance your career, these courses are tailored to support your growth at every stage.<span class="font-bold text-2xl">”</span></p> 
+                   <p class="mb-10  text-lg font-normal text-slate-500 text-body lg:text-xl sm:px-16 xl:px-48"><span class="font-bold text-2xl">“</span>Access high-quality courses designed to help you gain practical, real-world knowledge and build the confidence needed to solve complex problems. Our carefully structured content goes beyond theory, focusing on hands-on learning, real-life scenarios, and industry-relevant skills that employers truly value. Whether you are just starting out or looking to advance your career, these courses are tailored to support your growth at every stage.<span class="font-bold text-2xl">”</span></p> 
                 </div>
-                <div>
-                  <a href="#" class="p-3 bg-blue-500 font-bold rounded-xl items-center text-white hover:bg-blue-700 ">Explore more</a>  
-                </div>
-                       
-            </div>
+                <div class=" flex items-center gap-6 flex-col">
+                    <a href="#" class="p-3 bg-blue-500 font-bold rounded-xl items-center text-white hover:bg-blue-700 ">Explore more</a>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 font-bold text-blue-400 animate-bounce">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m9 12.75 3 3m0 0 3-3m-3 3v-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                </div>                       
+            </div>    
+        </div>
+        <div class="grid  md:flex  font-bold md:block  my-10 justify-center text-xs lg:text-lg gap-5">
+            <a href="" class="text-white bg-gradient-to-r px-3 py-3 from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br gap- flex items-center  rounded-xl  "><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide  lucide-arrow-big-up-icon lucide-arrow-big-up"><path d="M9 19a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-6a1 1 0 0 1 1-1h3.293a.707.707 0 0 0 .5-1.207l-7.086-7.086a1 1 0 0 0-1.414 0l-7.086 7.086a.707.707 0 0 0 .5 1.207H8a1 1 0 0 1 1 1z"/></svg>Devoplopment</a>
+            
+            <a href="" class="text-white bg-gradient-to-r py-3 from-green-400 px-3 via-green-500 to-green-600 hover:bg-gradient-to-br flex gap-1 items-center  rounded-xl "><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-building2-icon lucide-building-2"><path d="M10 12h4"/><path d="M10 8h4"/><path d="M14 21v-3a2 2 0 0 0-4 0v3"/><path d="M6 10H4a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/><path d="M6 21V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v16"/></svg>Business</a>
+            
+            <a href="" class="text-white bg-gradient-to-r py-3 px-3 from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br  rounded-xl flex gap-1 items-center"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-dollar-sign-icon lucide-badge-dollar-sign"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>Finance & Accounting</a>
+            
+            <a href="" class="text-white bg-gradient-to-r py-3 px-3 from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br flex gap-1 items-center  rounded-xl  "><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-folder-code-icon lucide-folder-code"><path d="M10 10.5 8 13l2 2.5"/><path d="m14 10.5 2 2.5-2 2.5"/><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"/></svg>IT & Software</a>
+            
+            <a href="" class="text-heading bg-gradient-to-r px-3 py-3 from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br flex gap-1 items-center rounded-xl  "><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z" />
+            </svg>
+            Office Productivity</a>
         </div>
     </div>
     <div class="">
-        <div  class="relative mt-10" >
-            <div class="">
-                
+        <div class="p-5  rounded-xl">
+            <div class=" ">
+                <H1 class="text-2xl ">Recomended for you</H1>
+                <hr class="mt-2 border-t-2 border-gray-300">
             </div>
-        </div>
-        <div>
-        
-        </div>
-        <div class="bg-aqua-400 p-5 shadow-2xl rounded-2xl">
-            <div class="mt-6 mb-6">
-                <H1 class="text-2xl font-bold ">Recomended for you</H1>
-                <hr class="mt-2 border-t-4 border-gray-800">
-            </div>
-            <div class="grid grid-cols-2 m gap-6 mt-4 md:grid-cols-3 lg:grid-cols-4">
+            <div class="gap-6 mt-4 flex overflow-x-auto ">
             {% for item in course %}
-            <a href="{% url 'myapp:detail' item.id %}">
-            <div class="flex mr-6 rounded-2xl gap-2 text-black bg-slate-900 shadow-xl flex-col hover:bg-neutral-secondary-medium  p-6 justify-between">
-                <img class="rounded-xl object-fit " src="{{item.image.url}}" alt="">  
-                    <H1 class="text-md line-clamp-2 min-h-[50px] text-white font-semibold">{{item.name}}</H1>
-                    <H1 class="text-xs text-white font-bold">{{item.instructor.name}}</H1>
-                    <div class="flex">
-                        <span class="text-lg flex font-medium text-green-300 text-heading line-through">₹{{ item.discount_amount }}/-</span><span class="ms-3 text-lg text-green-400 font-medium text-heading">₹{{ item.sell_price }}/-</span>
+                <a href="{% url 'myapp:detail' item.id %}">
+                <div class="flex mr-6 rounded-2xl gap-2 text-black bg-white p-4 flex-col hover:bg-neutral-secondary-medium  justify-between">
+                    <div>
+                        <img class="rounded-xl  object-fit " src="{{item.image.url}}" alt=""> 
                     </div>
-                    
-
-                    <H1 class="font-bold text-lg text-yellow-300">⭐{{item.rating}}</H1>
-                    
-                    <div class="flex justify-center pt-2 gap-4">
-                        <button class="inline-flex items-center text-white font-bold text-sm bg-indigo-400 rounded-xl p-2 ">Premium</button>
-                        <button class="bg-blue-300 p-2 font-bold text-sm rounded-xl">bestseller</button>
+                    <div class="">
+                        <H1 class="text-md line-clamp-2 min-h-[50px]  font-semibold">{{item.name}}</H1>
+                        <H1 class="text-xs  font-bold">{{item.instructor.name}}</H1>
+                        <H1 class="font-bold text-lg ">⭐{{item.rating}}</H1>
+                        <div class="flex">
+                        <span class="text-lg flex font-medium text-green-300 text-heading line-through">₹{{ item.discount_amount }}/-</span><span class="ms-3 text-lg text-green-400 font-medium text-heading">₹{{ item.sell_price }}/-</span>
+                    </div> 
+                    </div>           
+                    <div class="flex justify-center  gap-4">
+                        <button class="inline-flex items-center text-white  text-sm bg-indigo-400 rounded-xl p-2 ">Premium</button>
+                        <button class="bg-blue-300 p-2  text-sm rounded-xl">bestseller</button>
                     </div>      
-            </div>
-            </a>  
+                </div>
+                </a>  
             {% endfor %}
             </div>
         </div>
-                    {% for sub in subcategories %}
+        <div class="mbg-gray-600 p-5 rounded-xl">
+            {% for sub in subcategories %}
+        <!-- Subcategory Title -->
+        <h2 class="text-2xl  mt-8 mb-4">
+            {{ sub.name }}
+            <hr class="mt-2 border-t-2 border-gray-300">
+        </h2>
+        <!-- Grid Layout -->
+        <div class="flex  justify-between overflow-x-auto gap-6 mt-4  ">
+            {% for item in sub.course_set.all|slice:":8" %}
+            <a href="{% url 'myapp:detail' item.id %}">
 
-                <!-- Subcategory Title -->
-                <h2 class="text-2xl font-bold text-white mt-8 mb-4">
-                    {{ sub.name }}
-                </h2>
+                <div class="flex rounded-2xl w-[300px]   gap-2 text-black bg-white flex-col hover:bg-neutral-300 p-4 justify-between">
+                    
+                    <!-- Image -->
+                     {% if item.image %}
+                        <img class="rounded-xl object-fit " src="{{item.image.url}}" alt="">  
+                    {% else %}
+                        <img class="rounded-xl object-fit " src="{% static 'images/course_image.webp' %}" alt="">
+                    {% endif %}
+                    <!-- Title -->
+                    <h1 class="text-md line-clamp-2 min-h-[50px]  font-semibold">
+                        {{ item.name }}
+                    </h1>
 
-                <!-- Grid Layout -->
-                <div class="grid grid-cols-2 gap-6 mt-4 md:grid-cols-3 lg:grid-cols-4">
+                    <!-- Instructor -->
+                    <h1 class="text-xs  font-bold">
+                        {{ item.instructor.name }}
+                    </h1>
 
-                    {% for item in sub.course_set.all|slice:":8" %}
-                    <a href="{% url 'myapp:detail' item.id %}">
-
-                        <div class="flex rounded-2xl gap-2 text-black bg-slate-900 shadow-xl flex-col hover:bg-neutral-700 p-4 justify-between">
-                            
-                            <!-- Image -->
-                            {% if item.image %}
-                            <img class="rounded-xl object-cover h-[150px] w-full" src="{{ item.image.url }}" alt="">
-                            {% endif %}
-
-                            <!-- Title -->
-                            <h1 class="text-md line-clamp-2 min-h-[50px] text-white font-semibold">
-                                {{ item.name }}
-                            </h1>
-
-                            <!-- Instructor -->
-                            <h1 class="text-xs text-white font-bold">
-                                {{ item.instructor.name }}
-                            </h1>
-
-                            <!-- Price -->
-                            <div class="flex">
-                                <span class="text-lg flex font-medium text-green-300 line-through">
-                                    ₹{{ item.discount_amount }}/-
-                                </span>
-                                <span class="ms-3 text-lg text-green-400 font-medium">
-                                    ₹{{ item.sell_price }}/-
-                                </span>
-                            </div>
-
-                            <!-- Rating -->
-                            <h1 class="font-bold text-lg text-yellow-300">
-                                ⭐{{ item.rating }}
-                            </h1>
-
-                            <!-- Tags -->
-                            <div class="flex justify-center pt-2 gap-4">
-                                <button class="text-white font-bold text-sm bg-indigo-400 rounded-xl p-2">
-                                    Premium
-                                </button>
-                                <button class="bg-blue-300 p-2 font-bold text-sm rounded-xl">
-                                    Bestseller
-                                </button>
-                            </div>
-
-                        </div>
-
-                    </a>
-                    {% endfor %}
+                    <!-- Price -->
+                    <div class="flex">
+                        <span class="text-lg flex font-medium text-green-300 line-through">
+                            ₹{{ item.discount_amount }}/-
+                        </span>
+                        <span class="ms-3 text-lg text-green-400 font-medium">
+                            ₹{{ item.sell_price }}/-
+                        </span>
+                    </div>
+                    <!-- Rating -->
+                    <h1 class="font-bold text-lg text-yellow-300">
+                        ⭐{{ item.rating }}
+                    </h1>
+                    <!-- Tags -->
+                    <div class="flex justify-center pt-2 gap-4">
+                        <button class="text-white font-bold text-sm bg-indigo-400 rounded-xl p-2">
+                            Premium
+                        </button>
+                        <button class="bg-blue-300 p-2 font-bold text-sm rounded-xl">
+                            Bestseller
+                        </button>
+                    </div>
 
                 </div>
 
-{% endfor %}
-        
-        <div class="mt-10 w-full bg-gradient-to-r from-green-500 to-green-600 p-6 rounded-2xl shadow-xl flex flex-col md:flex-row items-center gap-6">
+            </a>
+            {% endfor %}
 
-    <!-- Left Image -->
-    <img class="h-28 w-28 md:h-32 md:w-32 object-cover rounded-xl shadow-md" 
-         src="{% static 'images/premium.jpg' %}" alt="">
-
-    <!-- Content -->
-    <div class="flex-1 text-white">
-        <h2 class="text-2xl font-bold mb-2">
-            Premium Membership 🚀
-        </h2>
-
-        <p class="text-sm md:text-base leading-relaxed text-green-100">
-            Unlock full access to our entire library of premium courses and learning resources for just ₹519/month. Dive into expertly crafted lessons, hands-on projects, and real-world scenarios designed to help you build practical, job-ready skills. Stay ahead in your career with continuous learning, structured guidance, and unlimited access—anytime, anywhere.
-        </p>
-
-        <!-- Button -->
-        <div class="mt-4">
-            <button class="bg-white text-green-600 font-bold px-5 py-2 rounded-xl hover:bg-gray-100 transition">
-                Get Premium
-            </button>
         </div>
-    </div>
 
-    
-</div>
+        {% endfor %}
+        </div>
         
+        
+        <div class="mt-10 w-full bg-slate-700 p-6 rounded-2xl shadow-xl flex flex-col md:flex-row items-center gap-6">
+
+            <!-- Left Image -->
+            <img class="h-28 w-28 md:h-32 md:w-32 object-cover rounded-xl shadow-md" 
+                src="{% static 'images/premium.jpg' %}" alt="">
+
+            <!-- Content -->
+            <div class="flex-1 text-white">
+                <h2 class="text-2xl font-bold mb-2">
+                    Premium Membership 🚀
+                </h2>
+
+                <p class="text-sm md:text-base leading-relaxed text-green-100">
+                        Unlock full access to our entire library of <span class="font-bold text-lmd text-red-400">premium</span> courses and learning resources for just <span class="font-bold text-red-400 text-md">₹519/month</span> . Dive into expertly crafted lessons, hands-on projects, and real-world scenarios designed to help you build practical, job-ready skills. Stay ahead in your career with continuous learning, structured guidance, and unlimited access—anytime, anywhere.
+                </p>
+                <!-- Button -->
+                <div class="mt-4">
+                    <button class="bg-white text-green-600 font-bold px-5 py-2 rounded-xl hover:bg-gray-100 transition">
+                        Get Premium
+                    </button>
+                </div>
+            </div> 
+        </div>
     </div>
 </div>              
 
