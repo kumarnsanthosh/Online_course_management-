@@ -13,6 +13,11 @@
       <img src="{% static 'images/profile-pic.png' %}" class="w-24 h-24 rounded-full mx-auto">
     {% endif %}
     <div class="bg-gray-300 items-center rounded-xl flex justify-between shadow-xl p-3">
+      <label class="mr-4" for="">Name</label>
+      <textarea name="description"
+              class="w-full border p-2 rounded">{{ instructor.user }}</textarea>
+    </div>
+    <div class="bg-gray-300 items-center rounded-xl flex justify-between shadow-xl p-3">
       <label class="mr-4" for="">Description:</label>
       <textarea name="description"
               class="w-full border p-2 rounded">{{ instructor.description }}</textarea>

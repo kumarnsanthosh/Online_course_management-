@@ -1,9 +1,0 @@
-{% extends 'base.html' %}
-{% block body %}
-    <form action="" method="post">
-        {% csrf_token %}
-        <p>Do you really want to delete?</p>
-        <button type="submit">Yes</button>
-        <a class="{% url 'dashboard:all_courses' %}">No</a>
-    </form>
-{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<div class="min-h-screen">
+    <div class="flex justify-center  text-4xl my-3 font-bold ">
+        {{category}}
+    </div>
+    <div class="mbg-gray-600 p-5 rounded-xl">
+            {% for sub in subcategories %}
+        <h2 class="text-2xl  mt-8 mb-4">
+            {{ sub.name }}
+            <hr class="mt-2 border-t-2 border-gray-300">
+        </h2>
+        <div class="flex  justify-between overflow-x-auto gap-6 mt-4  ">
+            {% for item in sub.course_set.all %}
+            <a href="{% url 'myapp:detail' item.id %}">
+                <div class="flex rounded-2xl w-[300px]   gap-2 text-black bg-white flex-col hover:bg-neutral-300 p-4 justify-between">
+                     {% if item.image %}
+                        <img class="rounded-xl object-fit " src="{{item.image.url}}" alt="">  
+                    {% else %}
+                        <img class="rounded-xl object-fit " src="{% static 'images/course_image.webp' %}" alt="">
+                    {% endif %}
+                    <h1 class="text-md line-clamp-2 min-h-[50px]  font-semibold">
+                        {{ item.name }}
+                    </h1>
+                    <h1 class="text-xs  font-bold">
+                        {{ item.instructor.name }}
+                    </h1>
+                    <div class="flex">
+                        <span class="text-lg flex font-medium text-green-300 line-through">
+                            ₹{{ item.discount_amount }}/-
+                        </span>
+                        <span class="ms-3 text-lg text-green-400 font-medium">
+                            ₹{{ item.sell_price }}/-
+                        </span>
+                    </div>
+                    <h1 class="font-bold text-lg text-yellow-300">
+                        ⭐{{ item.rating }}
+                    </h1>
+                    <div class="flex justify-center pt-2 gap-4">
+                        <button class="text-white font-bold text-sm bg-indigo-400 rounded-xl p-2">
+                            Premium
+                        </button>
+                        <button class="bg-blue-300 p-2 font-bold text-sm rounded-xl">
+                            Bestseller
+                        </button>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

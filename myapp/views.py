@@ -19,7 +19,8 @@ def admin_panel(request):
 def index(request):
     trending_course  = Course.objects.all()[:4]
     subcategories = SubCategory.objects.prefetch_related('course_set')[:4]
-    return render(request, 'index.html',{'course': trending_course , 'subcategories':subcategories})
+    category = Category.objects.all()
+    return render(request, 'index.html',{'course': trending_course , 'subcategories':subcategories, 'category':category})
 
 
 def details(request, id):
@@ -29,7 +30,7 @@ def details(request, id):
 
 def instructor_dashboard(request):
     if not hasattr(request.user, 'instructor'):
-        return redirect('create_course')
+        return redirect('myapp:index')
     instructor = request.user.instructor
     course = Course.objects.filter(instructor=instructor)
     return render(request, 'instructor.html', {'my_course':course, 'instructor':instructor})
@@ -91,14 +92,13 @@ def delete_course(request, id):
 
 
 def become_instructor(request):
+    user = request.user
     if hasattr(request.user, 'instructor'):
         return redirect('myapp:instructor')
-
     if request.method == 'POST':
         name = request.POST.get('name')
         description = request.POST.get('description')
         image = request.FILES.get('image')
-
         Instructor.objects.create(
             user=request.user,
             name=name,
@@ -108,11 +108,10 @@ def become_instructor(request):
 
         return redirect('myapp:instructor')
 
-    return render(request, 'become_instructor.html')
+    return render(request, 'become_instructor.html', {'user':user})
 
-def update_instructor(request):
-    if not hasattr(request.user, 'instructor'):
-        return redirect('become_instructor')
+def update_instructor(request, id):
+
 
     instructor = request.user.instructor
 
@@ -130,15 +129,17 @@ def update_instructor(request):
 
 
 
-def delete_instructor(request):
+def delete_instructor(request, id):
     if not hasattr(request.user, 'instructor'):
         return redirect('myapp:instructor')
 
-    instructor = request.user.instructor
-
+    user = request.user
+    instructor = Instructor.objects.get(user=user)
+    courses = instructor.courses.all()
+    print(courses)
     if request.method == 'POST':
         instructor.delete()
-        return redirect('home')  # or wherever
+        return redirect('myapp:index') 
 
     return render(request, 'delete_instructor.html', {'instructor': instructor})
 
@@ -172,7 +173,7 @@ def add_to_cart(request, course_id):
     cart_item, created = Cart.objects.get_or_create(user=request.user, course=course)
     Activity.objects.create(
         user=request.user,
-        action=f"Added '{course.title}' to cart"
+        action=f"Added '{course.name}' to cart"
     )
     return redirect('myapp:view_cart')
 
@@ -180,7 +181,7 @@ def add_to_cart(request, course_id):
 @login_required
 def remove_from_cart(request, cart_id):
     cart_item = get_object_or_404(Cart, id=cart_id, user=request.user)
-    course_name = cart_item.course.title
+    course_name = cart_item.course.name
     cart_item.delete()
     Activity.objects.create(
         user=request.user,
@@ -189,16 +190,8 @@ def remove_from_cart(request, cart_id):
     return redirect('myapp:view_cart')
 
 
-def create_student(request):
-    pass
-
-def update_student(request):
-    pass
-
-def view_student(request):
-    pass
-
-def delete_student(request):
-    pass
-
+def course_catogory(request, name):
+    category = Category.objects.get(name=name)
+    subcategories = SubCategory.objects.filter(main_category=category)
+    return render(request, 'courses.html', {'category': category, 'subcategories': subcategories})
 

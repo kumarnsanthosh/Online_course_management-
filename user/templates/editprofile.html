@@ -1,20 +1,29 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
-<div class="min-h-screen flex items-center justify-center  p-4">
+<div class="min-h-screen  items-center justify-center  p-4">
+  <div class="flex flex-col items-center">
+            <a href="{% url 'myapp:index' %}" class="flex items-center gap-3 mb-4 hover:opacity-80 transition">
+                <img src="{% static 'images/icon_bulb.png' %}" alt="SkillGrid Logo" class="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wide font-sans">
+                    Skill<span class="text-indigo-400">Grid</span>
+                </h1>
+            </a>
+            <h2 class="mt-4 text-center text-xl sm:text-2xl  font-semibold my-4 text-gray-900 underline">Update Your profile</h2>
+      
   <form method="POST" enctype="multipart/form-data"
-        class="bg-slate-900 p-6 rounded-xl shadow-md w-full max-w-lg space-y-4">
+        class="bg-white p-6 rounded-xl shadow-md w-full max-w-lg space-y-4">
 
     {% csrf_token %}
 
-    <h2 class="text-xl text-white font-bold text-center">Update Profile</h2>
+    <h2 class="text-xl  font-bold text-center text-blue-400">Hello {{user.username}}</h2>
 
 
     <div class="text-center">
       {% if profile.profile_pic %}
         <img src="{{ profile.profile_pic.url }}" class="w-24 h-24 rounded-full mx-auto object-cover">
       {% else %}
-        <img src="{% static 'images/user-image.png' %}" class="w-24 h-24 rounded-full mx-auto">
+        <img src="{% static 'images/profile-pic.png' %}" class="w-24 h-24 rounded-full mx-auto">
       {% endif %}
     </div>
 
@@ -42,5 +51,6 @@
     </button>
 
   </form>
+</div>
 </div>
 {% endblock %}

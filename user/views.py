@@ -22,10 +22,11 @@ def logoutpage(request):
 
 def register(request):
     form = RegisterForm(request.POST)
+    user = request.POST.get('username') or request.user
     if request.method == 'POST':
         if form.is_valid():
             user = form.save()
-            Activity.objects.create(user=user.username , 
+            Activity.objects.create( user=user, 
                                     action=f"User '{user.username}' registered")
             return redirect('user:login')
     else:
@@ -39,17 +40,20 @@ def profile(request):
 
 
 def update_profile(request):
-    student = Student.objects.get(user=request.user)
+    student, created = Student.objects.get_or_create(user=request.user)
     
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=student)
         if form.is_valid():
-            user = form.save()
+            student = form.save(commit=False)
+            student.save()
             Activity.objects.create(
-                user=user.username,
-                action=f"User '{user.username}' updated profile"
+                user=request.user,
+                action=f"User '{request.user.username}' updated profile"
             )
             return redirect('user:profile')
+        else:
+            form.errors
     else:
         form = ProfileForm(instance=student)
     

@@ -5,7 +5,7 @@ from .models import Course, Instructor
 class CourseForm(forms.ModelForm):
     class Meta:
         model = Course
-        fields = ['name', 'image', 'video', 'category', 'description',  'price', 'hours']
+        fields = ['name', 'image', 'video', 'category', 'description', 'instructor', 'price', 'hours']
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'w-full border p-2 rounded'

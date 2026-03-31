@@ -14,7 +14,7 @@ from django.shortcuts import get_object_or_404
 @login_required
 def admin_dashboard(request):
     if not request.user.is_superuser:
-        return redirect('home')  # restrict access
+        return redirect('home') 
     avg_rating = Course.objects.aggregate(avg=Avg('rating'))['avg']
     overall_platform_quality = round(avg_rating,1)
     top_courses = Course.objects.order_by('-rating')[:12] 
@@ -36,7 +36,7 @@ def admin_dashboard(request):
 @login_required
 def all_courses(request):
     if not request.user.is_superuser:
-        return redirect('home')  # restrict access
+        return redirect('home') 
     course = Course.objects.all()
     return render(request, 'all_courses.html', {'course': course})
 
@@ -60,7 +60,7 @@ def creat_course(request):
 @login_required
 def view_course(request, id):
     if not request.user.is_superuser:
-        return redirect('home')  # restrict access
+        return redirect('home')  
     course = Course.objects.get(id=id)
     return render(request, 'admin_course_detail.html', {'course': course})
 
@@ -77,7 +77,7 @@ def update_course(request, id):
                 action=f"Course '{course.name}' updated"
             )
             return redirect('myapp:instructor')
-    return render(request, 'update_course.html', {'form': form, 'course': course})
+    return render(request, 'admin_update_course.html', {'form': form, 'course': course})
 
 @login_required
 def delete_course(request, id):
@@ -85,27 +85,27 @@ def delete_course(request, id):
     if request.method == 'POST':
         course.delete()
         return redirect('dashboard:all_courses')
-    return render(request, 'delete_course.html', {'course': course})
+    return render(request, 'admin_delete_course.html', {'course': course})
 
 
 @login_required
 def all_instructors(request):
     if not request.user.is_superuser:
-        return redirect('home')  # restrict access
+        return redirect('home') 
     instructor = Instructor.objects.all()
     return render(request, 'all_instructors.html', {'instructors': instructor})
 
 @login_required
 def view_instructor(request, id):
     if not request.user.is_superuser:
-        return redirect('home')  # restrict access
+        return redirect('home')  
     instructor = Instructor.objects.get(id=id)
     courses = instructor.courses.all()
     context = {
         'instructor': instructor,
         'courses': courses
     }
-    return render(request, 'view_instructor.html', context)
+    return render(request, 'admin_view_instructor.html', context)
 
 @login_required
 def update_instructor(request, id):
@@ -115,11 +115,11 @@ def update_instructor(request, id):
     if request.method == 'POST':
         if form.is_valid():
             form.save()
-            return redirect('dashboard:all_course')
+            return redirect('dashboard:all_instructors')
     
     else:
         form = InstructorForm()
-    return render(request, 'update_instructor.html', {'course': form})
+    return render(request, 'admin_update_instructor.html', {'course': form})
 
 @login_required
 def delete_instructor(request, id):
@@ -132,6 +132,22 @@ def delete_instructor(request, id):
         'instructor': instructor,
         'courses': courses
     }
-    return render(request, 'delete_instructor.html', context)
+    return render(request, 'admin_delete_instructor.html', context)
 
 
+def admin_become_instructor(request):
+    user = request.user
+
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        description = request.POST.get('description')
+        image = request.FILES.get('image')
+        instructor, created = Instructor.objects.get_or_create(user=user)
+        instructor.name = name
+        instructor.description = description
+        if image: 
+            instructor.image = image
+        instructor.save()
+        return redirect('dashboard:all_courses')
+
+    return render(request, 'become_instructor.html', {'user': user})

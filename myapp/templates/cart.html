@@ -1,16 +1,13 @@
 {% extends 'base.html' %}
 {% block body %}
 <div class="max-w-7xl mx-auto px-4 py-8">
-    <h1 class="text-4xl font-bold text-gray-900 mb-8">Shopping Cart</h1>
-    
+    <h1 class="text-4xl font-bold text-gray-900 mb-8">Shopping Cart</h1> 
     {% if cart_items %}
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <!-- Cart Items Section -->
         <div class="lg:col-span-2">
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
                 {% for item in cart_items %}
                 <div class="border-b border-gray-200 p-6 flex gap-4">
-                    <!-- Course Image -->
                     <div class="flex-shrink-0">
                         {% if item.course.image %}
                         <img src="{{ item.course.image.url }}" alt="{{ item.course.name }}" class="w-24 h-24 object-cover rounded-lg">
@@ -20,20 +17,16 @@
                         </div>
                         {% endif %}
                     </div>
-                    
-                    <!-- Course Details -->
                     <div class="flex-grow">
                         <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ item.course.name }}</h3>
                         
                         <p class="text-gray-600 text-sm mb-2">
                             By: <span class="text-blue-500">{{ item.course.instructor.name }}</span>
                         </p>
-                        
                         <div class="flex items-center gap-2 mb-3">
                             <span class="text-yellow-500 font-semibold">★ {{ item.course.rating }}</span>
                             <span class="text-gray-500 text-sm">(Rating)</span>
                         </div>
-                        
                         <div class="flex items-center gap-4">
                             <div>
                                 <span class="text-2xl font-bold text-gray-900">₹{{ item.course.sell_price|floatformat:0 }}</span>
@@ -42,8 +35,6 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Remove Button -->
                     <div class="flex flex-col justify-between items-end">
                         <form method="post" action="{% url 'myapp:remove_from_cart' item.id %}">
                             {% csrf_token %}
@@ -59,12 +50,9 @@
                 {% endfor %}
             </div>
         </div>
-        
-        <!-- Price Summary Section -->
         <div class="lg:col-span-1">
             <div class="bg-white rounded-lg shadow-lg p-6 sticky top-24">
                 <h2 class="text-2xl font-bold text-gray-900 mb-6">Price Details</h2>
-                
                 <div class="space-y-4 mb-6 pb-6 border-b border-gray-200">
                     <div class="flex justify-between text-gray-700">
                         <span>Original Price</span>
@@ -75,25 +63,20 @@
                         <span class="text-green-600">-₹{{ total_savings|floatformat:0 }}</span>
                     </div>
                 </div>
-                
                 <div class="flex justify-between text-2xl font-bold text-gray-900 mb-6">
                     <span>Total</span>
                     <span>₹{{ total_price|floatformat:0 }}</span>
                 </div>
-                
                 <button class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg transition mb-3">
                     Proceed to Checkout
                 </button>
-                
                 <a href="{% url 'myapp:index' %}" class="w-full block text-center bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-4 rounded-lg transition">
                     Continue Shopping
                 </a>
             </div>
         </div>
     </div>
-    
     {% else %}
-    <!-- Empty Cart Message -->
     <div class="flex flex-col items-center justify-center py-16">
         <svg class="w-24 h-24 text-gray-400 mb-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
