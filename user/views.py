@@ -57,4 +57,4 @@ def update_profile(request):
     else:
         form = ProfileForm(instance=student)
     
-    return render(request, 'editprofile.html', {'form': form})
+    return render(request, 'editprofile.html', {'form': form, 'profile': student})

@@ -41,8 +41,6 @@ def create_course(request):
     if request.method == 'POST':
         if form.is_valid():
             course = form.save(commit=False)
-            if not hasattr(request.user, 'instructor'):
-                Instructor.objects.create(user=request.user)
             course.instructor = request.user.instructor
             course.save()
             Activity.objects.create(
@@ -50,6 +48,8 @@ def create_course(request):
                 action=f"Course '{course.name}' created"
             )
             return redirect('myapp:instructor')
+        else:
+            print(form.errors)
     else:
         form = CourseForm()
     return render(request, 'create_course.html', {'form':form})

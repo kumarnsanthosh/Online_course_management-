@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    pro_pic =  models.ImageField(upload_to='images/profile_pictures/')
+    pro_pic =  models.ImageField(upload_to='images/profile_pictures/', blank=True, null=True)
     bio = models.CharField(max_length=100, null=True)
     phone = models.CharField(max_length=15, null=True)
     address = models.CharField(max_length=100, null=True)

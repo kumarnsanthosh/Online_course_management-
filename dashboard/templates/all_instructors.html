@@ -19,9 +19,7 @@
             {% endif %}
         </div>
         <div class="p-3 sm:p-4">
-          <h2 class="text-lg sm:text-xl font-bold text-gray-900 truncate">
-            {{ instructor.name }}
-          </h2>
+          <h2 class="text-lg sm:text-xl font-bold text-gray-900 truncate">{% if instructor.name %}{{ instructor.name }}{% elif instructor.user %}{{ instructor.user.username }}{% else %}Unknown Instructor{% endif %}</h2>
           <p class="text-sm text-gray-600 mt-2 line-clamp-2">
             {{ instructor.description|truncatewords:15 }}
           </p>

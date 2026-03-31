@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="min-h-screen bg-gray-50">
+  <div class=" text-white py-12">
+    <div class="px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
+      <div class="flex flex-col sm:flex-row gap-8 items-center">
+        <div class="flex-shrink-0">
+          {% if student.image %}
+          <img src="{{ student.image.url }}" alt="{{ student.name }}" class="w-32 h-32 sm:w-40 sm:h-40  object-cover border-4 border-white shadow-lg">
+          {% else %}
+          <img src="{% static 'images/profile-pic.png' %}" alt="{{ student.name }}" class="w-32 h-32 sm:w-40 sm:h-40  object-cover border-4 border-white shadow-lg">
+          {% endif %}
+        </div>
+        <div class="flex-1   sm:text-left">
+          <h1 class="text-3xl sm:text-4xl my-3 text-black font-bold underline">{% if student.name %}{{ student.name }}{% elif student.user %}{{ student.user.username }}{% else %}Unknown student{% endif %}</h1>
+          <div class="flex my-2 text-black ">
+            <label class="font-bold mr-17" for="">Bio:</label>
+            <p class="text-black ">{{ student.bio }}</p>
+          </div>
+          <div class="flex my-2 text-black ">
+            <label class="font-bold mr-13" for="">Phone:</label>
+            <p class="text-black" >{{ student.phone }}</p>
+          </div>
+          <div class="flex my-2 text-black ">
+            <label for="" class="font-bold mr-10">Address:</label>
+            <p class="text-black" >{{ student.address }}</p>
+          </div>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto mt-8">
+    <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">Admin Actions</h2>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="{% url 'dashboard:update_student' student.id %}" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition flex items-center justify-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+          </svg>
+          Edit Student
+        </a>
+        <a href="{% url 'dashboard:delete_student' student.id %}" class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg transition flex items-center justify-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 2.2a.75.75 0 00-1.323-.75L17.138 6m-4.138 0l2.151-2.951A.75.75 0 1015.75 3.75M9.5 6H7.5m4 0v12m6-9v9" />
+          </svg>
+          Delete Student
+        </a>
+        <a href="{% url 'dashboard:all_students' %}" class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-3 px-6 rounded-lg transition flex items-center justify-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+          </svg>
+          Back to Students
+        </a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

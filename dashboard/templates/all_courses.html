@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block body %}
-<div class="bg-aqua-400 p-5 shadow-2xl rounded-2xl">
+<div class=" p-5 ">
             <div class="flex justify-between  mt-6 mb-6">
                 <H1 class="text-2xl font-bold ">All courses</H1>
-                <a href="{% url 'dashboard:admin_became_instructor' %}" class="bg-blue items-center text-xs flex px-2 rounded-lg bg-blue-400">Create course</a>
+                <a href="{% url 'dashboard:create_course' %}" class="bg-blue items-center text-xs flex px-2 rounded-lg bg-blue-400">Create course</a>
             </div>
             <hr class="mt-2 border border-gray-800">
             <div class="grid grid-cols-2 m gap-6 mt-4 md:grid-cols-3 lg:grid-cols-4">

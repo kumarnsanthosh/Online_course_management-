@@ -55,11 +55,8 @@
         {{ form.hours }}
       </div>
       <div class="flex justify-between items-center pt-4">
-        <a href="{% url 'myapp:instructor' %}" class="text-gray-500 hover:underline">Cancel</a>
-        <button type="submit"
-                class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">
-          Update Course
-        </button>
+        <a href="{% url 'dashboard:all_instructors' %}" class="text-gray-500 hover:underline">Cancel</a>
+        <button type="submit" class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition">Update Course</button>
       </div>
     </form>
   </div>

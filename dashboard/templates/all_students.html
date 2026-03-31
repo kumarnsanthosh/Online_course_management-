@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<div class="min-h-screen bg-gray-50 py-8">
+  <div class="px-4  justify-between sm:px-6 lg:px-12">
+    <div class="mb-8">
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900">All Students</h1>
+      <p class="text-gray-600 mt-2">Manage and view all students on the platform</p>
+      <hr class="mt-4 border-t-2 border-gray-300">
+    </div>
+    <div class="my-5">
+      <a href="{% url 'dashboard:add_student' %}" class="bg-blue-400 text-white rounded-xl shadow-xl p-2">Register new student</a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+      {% for student in students %}
+      <div class="max-w-sm bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow overflow-hidden">
+        <div class="relative h-24 sm:h-28  flex items-center justify-center overflow-hidden">
+          {% if student.image %}
+            <img src="{{ student.image.url }}" class="w-24 h-24 rounded-full mx-auto">
+            {% else %}
+            <img src="{% static 'images/profile-pic.png' %}" class="w-24 h-24 rounded-full mx-auto">
+            {% endif %}
+        </div>
+        <div class="p-3 sm:p-4">
+          <h2 class="text-lg sm:text-xl font-bold text-gray-900 truncate">{% if student.name %}{{ student.name }}{% elif student.user %}{{ student.user.username }}{% else %}Unknown Student{% endif %}</h2>
+          <p class="text-sm text-gray-600 mt-2 line-clamp-2">
+            {{ student.description|truncatewords:15 }}
+          </p>
+          <div class="mt-3 flex gap-1">
+            <a href="{% url 'dashboard:view_student' student.id %}" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded text-xs text-center">View</a>
+            <a href="{% url 'dashboard:update_student' student.id %}" class="flex-1 bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-2 rounded text-xs text-center">Edit</a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+</div>
+{% endblock %}

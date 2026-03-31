@@ -11,12 +11,12 @@ urlpatterns = [ path('admin-dashboard/', admin_dashboard, name='admin_dashboard'
                 path('all_instructors/', all_instructors, name='all_instructors'),
                 path('view_instructor/<int:id>/', view_instructor, name='view_instructor'),
                 path('update_instructor/<int:id>/', update_instructor, name='update_instructor'),
-                path('create_course/', creat_course, name='creat_course'),
+                path('create_course/', create_course, name='create_course'),
                 path('delete_instructor/<int:id>/', delete_instructor, name='admin_delete_instructor'),
-                path('admin-become-instructor/', admin_become_instructor, name='admin_became_instructor'),
-            #    path('add_courses/', add_instructor, name='add_instructor'),
-            #    path('update_student/<int:id>/', update_student, name='update_student'),
-            #    path('delete_student/<int:id>', delete_student, name='delete_student'),
-            #    path('add_student/', add_student, name='add_student'),
+                path('all_students/', all_students, name='all_students'),
+                path('update_student/<int:id>/', update_student_profile, name='update_student'),
+                path('delete_student/<int:id>/', delete_student, name='delete_student'),
+                path('add_student/', register_student, name='add_student'),
+                path('view_student/<int:id>/', student_profile, name='view_student'),
                  
             ]
